@@ -1,0 +1,22 @@
+<mat-sidenav-container class="w-[270px]" *ngIf="navigationItems && navigationItems.length">
+    <mat-sidenav 
+        #sidenav 
+        mode="side" 
+        opened 
+        class="w-[270px] bg-slate-200 px-4"                 
+        [fixedInViewport]="true" 
+        [fixedTopGap]="0"
+        [fixedBottomGap]="0"
+        >
+        <div class="flex flex-col w-full items-center my-4">
+            <img src="assets/psychotherapy_logo.png" alt="" class="rounded-full w-28 h-28">
+        </div>
+        <ul class="font-bold text-xl gap-y-4">
+            @for (item of navigationItems; track $index) {
+                <li>
+                    <a [routerLink]="item.link" matRipple class="mt-3 px-2 rounded-lg block w-full h-full text-violet-950 hover:text-violet-600">{{ item.label }}</a>
+                </li>
+            }
+        </ul>
+    </mat-sidenav>
+  </mat-sidenav-container>
