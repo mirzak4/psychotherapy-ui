@@ -1,1 +1,40 @@
-<p>articles works!</p>
+<div class="w-full h-full bg-gradient-to-b from-slate-50 to-zinc-400">
+  <div class="flex flex-col w-full h-full pl-[48px] pt-[36px]">
+    <div class="flex flex-row">
+      <h1 class="w-9/12 font-bold text-black text-4xl mb-10">
+        Articles & Resources
+      </h1>
+      <!--<button
+        mat-flat-button
+        class="p-5 bg-grey-darker rounded-full p-3 shadow-lg text-base font-medium text-grey-lightest"
+        (click)="openNewArticleModal()"
+      >
+        New Article
+      </button>
+    --></div>
+
+    <!--<div class="flex items-center p-5 w-500px">
+      <div class="text-left text-base font-sans ml-100px">
+        Explore and enjoy hundreds of articles that are intended to educate and
+        inspire. Whatever your mood or goal, feel free to browse our
+        expert-informed articles on meditation, mindfulness, mental health,
+        sleep, and overall well-being.
+      </div>
+      <img
+        class="ml-4 h-[356px] w-[325px] mr-100px"
+        src="https://images.ctfassets.net/v3n26e09qg2r/6vlsLhJI0lsi7RPds5b95I/704bbedca492588ad679b6ee3ef6bc8b/Frame_369746.svg?fm=&w=384&q=75"
+        alt="Image description"
+      />
+    </div>
+  -->
+
+    <div class="grid gap-x-0 grid-cols-4 mt-5 content-evenly">
+      <ng-container *ngFor="let article of articles">
+        <app-article-card
+          class="w-[300px]"
+          [article]="article"
+        ></app-article-card>
+      </ng-container>
+    </div>
+  </div>
+</div>

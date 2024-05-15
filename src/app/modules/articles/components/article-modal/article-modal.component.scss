@@ -1,0 +1,13 @@
+::ng-deep {
+    .article-modal-container {
+        width: 750px;
+        height: 500px;
+        .mat-mdc-dialog-container {
+            .mdc-dialog__container {
+                .mat-mdc-dialog-surface {
+                    padding: 24px 24px 24px 24px;
+                }
+            }
+        }
+    }
+}
