@@ -21,5 +21,7 @@ export class ArticleCardComponent {
   onViewClick(): void {
     this.router.navigate(['/articles/article', this.article.id]);
     this.articleService.setCurrentArticle(this.article);
+
+    //console.log('Video URL:', this.article.video.videoUrl);
   }
 }

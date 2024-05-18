@@ -17,5 +17,13 @@
     <div *ngFor="let paragraph of paragraphs">
       <p class="font-sans w-4/5 text-lg mb-10">{{ paragraph }}</p>
     </div>
+
+    <div *ngIf="article.video.videoUrl">
+      <video
+        [src]="article.video.videoUrl"
+        controls
+        class="w-full h-full"
+      ></video>
+    </div>
   </div>
 </div>
