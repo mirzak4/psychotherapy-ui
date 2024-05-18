@@ -3,10 +3,6 @@ import { ArticleDetailComponent } from './modules/articles/components/article-de
 
 export const routes: Routes = [
   {
-    path: 'article/:id',
-    component: ArticleDetailComponent,
-  },
-  {
     path: '',
     redirectTo: 'sign-in',
     pathMatch: 'full',

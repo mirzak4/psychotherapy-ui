@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { Article } from '../../../../viewmodels/classes';
 import { Router } from '@angular/router';
+import { ArticleService } from '../../services/article.service';
 
 @Component({
   selector: 'app-article-card',
@@ -14,10 +15,11 @@ import { Router } from '@angular/router';
 })
 export class ArticleCardComponent {
   @Input() article: Article;
-  constructor(private router: Router) {}
+
+  constructor(private articleService: ArticleService, private router: Router) {}
 
   onViewClick(): void {
-    // Navigacija na detalje članka
-    this.router.navigate(['/article', this.article.id]);
+    this.router.navigate(['/articles/article', this.article.id]);
+    this.articleService.setCurrentArticle(this.article);
   }
 }
