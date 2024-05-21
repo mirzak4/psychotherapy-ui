@@ -19,11 +19,6 @@ export class NavigationService {
       link: '/articles',
       roles: [Role.Psychologist, Role.Patient],
     },
-    {
-      label: 'Create article',
-      link: '/articles/create-article',
-      roles: [Role.Psychologist, Role.Patient],
-    },
   ];
   constructor(private _authService: AuthService) {}
 
