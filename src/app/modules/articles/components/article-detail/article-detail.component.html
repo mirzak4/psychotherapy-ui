@@ -1,8 +1,16 @@
 <div class="w-full bg-gradient-to-b from-slate-50 to-zinc-400">
   <div class="p-20 content-center">
-    <h1 class="w-9/12 font-bold text-black text-4xl mb-2 ml-50 text-justify">
-      {{ article.title }}
-    </h1>
+    <div class="flex flex-row">
+      <h1 class="w-9/12 font-bold text-black text-4xl mb-2 ml-50 text-justify">
+        {{ article.title }}
+      </h1>
+      <button
+        mat-flat-button
+        class="pl-5 pr-5 bg-grey-darker rounded-full p-3 shadow-lg text-base font-medium text-grey-lightest"
+      >
+        Edit Article
+      </button>
+    </div>
 
     <h3 class="mb-10 text-slate-500">By {{ article.author }}</h3>
 
