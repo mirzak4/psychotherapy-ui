@@ -1,14 +1,4 @@
-export enum Gender {
-  Male,
-  Female,
-}
-
-export enum Role {
-  Manager,
-  Psychologist,
-  Patient,
-  None,
-}
+import { UserRole } from "./enums";
 
 export interface IText {
   content: string;
@@ -29,4 +19,12 @@ export interface IArticle {
   text?: IText;
   image?: IImage;
   video?: IVideo;
+}
+
+export interface ITokenUser {
+  sub: string;
+  name: string;
+  email: string;
+  exp: number;
+  role: UserRole;
 }

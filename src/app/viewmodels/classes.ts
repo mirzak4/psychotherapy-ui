@@ -1,4 +1,5 @@
-import { IArticle, IImage, IText, IVideo } from './viewmodels';
+import { UserRole } from './enums';
+import { IArticle, IImage, IText, ITokenUser, IVideo } from './viewmodels';
 
 export class Text implements IText {
   content: string;
@@ -47,6 +48,27 @@ export class Article implements IArticle {
   image?: IImage | undefined;
   video?: IVideo | undefined;
 
+  constructor(data?: IArticle) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+}
+
+export class LoginResponse {
+  accessToken: string;
+}
+
+export class TokenUser implements ITokenUser {
+  sub: string;
+  name: string;
+  email: string;
+  exp: number;
+  role: UserRole;
+  
   constructor(data?: IArticle) {
     if (data) {
       for (var property in data) {
