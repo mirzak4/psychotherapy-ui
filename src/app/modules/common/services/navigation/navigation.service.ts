@@ -10,23 +10,22 @@ export interface NavigationConfig {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NavigationService {
   private _config: NavigationConfig[] = [
     {
       label: 'Articles',
       link: '/articles',
-      roles: [ Role.Psychologist, Role.Patient ]
-    }
-  ]
-  constructor(private _authService: AuthService) {
-  }
+      roles: [Role.Psychologist, Role.Patient],
+    },
+  ];
+  constructor(private _authService: AuthService) {}
 
   getNavigationData$(): Observable<NavigationConfig[]> {
     return this._authService.currentUserRole$.pipe(
       map((role) => {
-        return this._config.filter(c => c.roles.includes(role))
+        return this._config.filter((c) => c.roles.includes(role));
       })
     );
   }

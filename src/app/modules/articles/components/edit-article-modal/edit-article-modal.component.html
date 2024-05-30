@@ -1,4 +1,4 @@
-<h1 class="text-2xl text-slate-600 font-bold mb-10">Publish new article</h1>
+<h1 class="text-2xl text-slate-600 font-bold mb-10">Edit current article</h1>
 <form [formGroup]="articleForm">
   <mat-form-field class="w-full">
     <mat-label>Enter article title</mat-label>
@@ -38,7 +38,6 @@
   <button
     mat-flat-button
     class="p-5 bg-grey-darker rounded-full p-3 shadow-lg text-base font-medium text-grey-lightest"
-    (click)="createArticle()"
   >
     Save
   </button>

@@ -1,13 +1,38 @@
-<div class="w-full h-full bg-gradient-to-b from-slate-50 to-zinc-400">
+<div class="w-full bg-gradient-to-b from-slate-50 to-zinc-400">
   <div class="p-20 content-center">
-    <h1 class="w-9/12 font-bold text-black text-4xl mb-10 text-center">
-      Naslov
-    </h1>
-  </div>
+    <div class="flex flex-row">
+      <h1 class="w-9/12 font-bold text-black text-4xl mb-2 ml-50 text-justify">
+        {{ article.title }}
+      </h1>
+      <button
+        mat-flat-button
+        class="pl-5 pr-5 bg-grey-darker rounded-full p-3 shadow-lg text-base font-medium text-grey-lightest"
+        (click)="openEditArticleModal()"
+      >
+        Edit Article
+      </button>
+    </div>
 
-  <div>
-    <h1>Slika</h1>
-  </div>
+    <h3 class="mb-10 text-slate-500">By {{ article.author }}</h3>
 
-  <div>Ostalo</div>
+    <div class="mt-0 mb-10 ml-500 p-500">
+      <img
+        class="h-[350px]"
+        [src]="article.image?.imageUrl"
+        alt="Photo of a Shiba Inu"
+      />
+    </div>
+
+    <div *ngFor="let paragraph of paragraphs">
+      <p class="font-sans w-4/5 text-lg mb-10">{{ paragraph }}</p>
+    </div>
+
+    <div *ngIf="article.video.videoUrl">
+      <video
+        [src]="article.video.videoUrl"
+        controls
+        class="w-full h-full"
+      ></video>
+    </div>
+  </div>
 </div>
