@@ -28,3 +28,17 @@ export interface ITokenUser {
   exp: number;
   role: UserRole;
 }
+
+export interface IRegisterPatientRequest {
+  type: string;
+  name: string;
+  email: string;
+  password: string;
+  userId: string;
+  roleId: string;
+}
+
+export interface IRole {
+  roleId: string;
+  name: string;
+}

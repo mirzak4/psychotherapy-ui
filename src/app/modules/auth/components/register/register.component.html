@@ -6,33 +6,33 @@
                 <div class="flex flex-col">
                     <mat-label class="mb-2">First Name:</mat-label>
                     <mat-form-field>
-                        <input formControlName="firstName" matInput type="text" placeholder="Enter first name...">
+                        <input formControlName="firstName" matInput type="text" placeholder="Enter first name..." class="text-[14px]">
                         <mat-error>First Name is required</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="flex flex-col">
                     <mat-label class="mb-2">Last Name:</mat-label>
                     <mat-form-field>
-                        <input formControlName="lastName" matInput type="text" placeholder="Enter last name...">
+                        <input formControlName="lastName" matInput type="text" placeholder="Enter last name..." class="text-[14px]">
                         <mat-error>Last Name is required</mat-error>
                     </mat-form-field>
                 </div>
             </div>
             <div class="flex flex-row gap-x-5">
-                <div class="flex flex-col">
+                <!-- <div class="flex flex-col">
                     <mat-label class="mb-2">Gender:</mat-label>
                     <mat-form-field>
-                        <mat-select placeholder="Select gender...">
+                        <mat-select placeholder="Select gender..." class="text-[14px]">
                             <mat-option [value]="Gender.Male">Male</mat-option>
                             <mat-option [value]="Gender.Female">Female</mat-option>
                           </mat-select>
                         <mat-error>Gender is required</mat-error>
                     </mat-form-field>
-                </div>
+                </div> -->
                 <div class="flex flex-col">
                     <mat-label class="mb-2">Age:</mat-label>
                     <mat-form-field>
-                        <input formControlName="age" matInput type="number" placeholder="Enter age...">
+                        <input formControlName="age" matInput type="number" placeholder="Enter age..." class="text-[14px]">
                         <mat-error>Age is required</mat-error>
                     </mat-form-field>
                 </div>
@@ -40,19 +40,26 @@
             <div class="flex flex-col">
                 <mat-label class="mb-2">Email:</mat-label>
                 <mat-form-field>
-                    <input formControlName="email" matInput type="text" placeholder="Enter email...">
+                    <input formControlName="email" matInput type="text" placeholder="Enter email..." class="text-[14px]">
                     <mat-error>Email is required</mat-error>
                 </mat-form-field>
             </div>
             <div class="flex flex-col">
                 <mat-label class="mb-2">Password</mat-label>
                 <mat-form-field>
-                    <input formControlName="password" matInput type="password" placeholder="Enter password">
+                    <input formControlName="password" matInput type="password" placeholder="Enter password" class="text-[14px]">
                     <mat-error>Password is required</mat-error>
                 </mat-form-field>
             </div>
+            <div class="flex flex-col">
+                <mat-label class="mb-2">Confirm Password</mat-label>
+                <mat-form-field>
+                    <input formControlName="confirmPassword" matInput type="password" placeholder="Confirm your password" class="text-[14px]">
+                    <mat-error>Password Confirmation is required</mat-error>
+                </mat-form-field>
+            </div>
             <div class="flex flex-col items-center mt-4">
-                <button mat-flat-button class="bg-slate-600 text-white mb-1">REGISTER</button>
+                <button mat-flat-button class="bg-slate-600 text-white mb-1" (click)="register()">REGISTER</button>
                 <span>
                     Already joined? Sign In 
                     <a routerLink="/sign-in" class="cursor-pointer underline text-blue-700 hover:text-slate-600">here</a>

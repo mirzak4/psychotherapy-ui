@@ -1,9 +1,9 @@
 import { Injectable, inject } from '@angular/core';
-import { ITokenUser } from '../../../viewmodels/viewmodels';
+import { IRegisterPatientRequest, IRole, ITokenUser } from '../../../viewmodels/viewmodels';
 import { BehaviorSubject, Observable, Subject, map, of, switchMap, tap } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environment';
-import { LoginResponse } from '../../../viewmodels/classes';
+import { LoginResponse, Role } from '../../../viewmodels/classes';
 import { jwtDecode } from 'jwt-decode';
 import { UserRole } from '../../../viewmodels/enums';
 
@@ -14,6 +14,7 @@ export class AuthService {
   private _http = inject(HttpClient);
   private _accessToken$ = new BehaviorSubject<string>(this.accessToken);
   private _authenticated: boolean = false;
+  private _systemRoles: Role[] = [];
 
   constructor() { }
 
@@ -97,5 +98,34 @@ export class AuthService {
     localStorage.removeItem('access_token');
     this._authenticated = false;
     return of(true);
+  }
+
+  registerPatient(request: IRegisterPatientRequest, patientAge: number) {
+    const params = new HttpParams().set('age', patientAge);
+    return this._http.post(environment.apiUrl + 'userservice/registerPatient', request, { params: params });
+  }
+
+  getAllSystemRoles(): Role[] {
+    // return this._systemRoles;
+    return [
+      {
+        roleId: '334e6b37-a502-4f77-9aa7-6350bf82bf82',
+        name: 'Administrator'
+      },
+      {
+        roleId: '57fc36a7-66fc-4442-a8fd-6c800cdc58e7',
+        name: 'Patient'
+      },
+      {
+        roleId: '7cc454ab-65b7-4dbb-9068-76b98589f801',
+        name: 'Psychologist'
+      }
+    ]
+  }
+
+  getAllRoles() {
+    return this._http.get<IRole[]>(environment.apiUrl + 'userservice/roles').pipe(
+      tap((roles: IRole[]) => this._systemRoles = roles)
+    );
   }
 }
