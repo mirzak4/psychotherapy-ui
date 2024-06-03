@@ -1,32 +1,38 @@
 import { Injectable } from '@angular/core';
-import { Role } from '../../../../viewmodels/viewmodels';
 import { AuthService } from '../../../auth/services/auth.service';
 import { Observable, map } from 'rxjs';
+import { UserRole } from '../../../../viewmodels/enums';
 
-export interface NavigationConfig {
+export interface NavigationItem {
   label: string;
+  icon?: string;
   link: string;
-  roles: Role[];
+  roles: UserRole[];
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class NavigationService {
-  private _config: NavigationConfig[] = [
+  private _config: NavigationItem[] = [
     {
       label: 'Articles',
       link: '/articles',
-      roles: [Role.Psychologist, Role.Patient],
+      roles: [UserRole.Psychologist, UserRole.Patient],
     },
+    {
+      label: 'Stress Relief',
+      link: '/stress-relief',
+      roles: [UserRole.Patient]
+    }
   ];
   constructor(private _authService: AuthService) {}
 
-  getNavigationData$(): Observable<NavigationConfig[]> {
-    return this._authService.currentUserRole$.pipe(
-      map((role) => {
-        return this._config.filter((c) => c.roles.includes(role));
+  public navigation$(): Observable<NavigationItem[]> {
+    return this._authService.role$().pipe(
+      map((role: UserRole) => {
+        return this._config.filter(c => c.roles.includes(role))
       })
-    );
+    )
   }
 }

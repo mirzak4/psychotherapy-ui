@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from './modules/common/components/sidebar/sidebar.component';
+import { AuthService } from './modules/auth/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
@@ -13,4 +14,10 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'psychotherapy-ui';
+
+  constructor(private _authService: AuthService) {}
+
+  isSignedIn(): boolean {
+    return this._authService.authenticated;
+  }
 }

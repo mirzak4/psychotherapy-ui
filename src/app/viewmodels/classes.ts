@@ -1,4 +1,5 @@
-import { IArticle, IImage, IText, IVideo } from './viewmodels';
+import { UserRole } from './enums';
+import { IArticle, IImage, IRegisterPatientRequest, IRole, IText, ITokenUser, IVideo } from './viewmodels';
 
 export class Text implements IText {
   content: string;
@@ -48,6 +49,59 @@ export class Article implements IArticle {
   video?: IVideo | undefined;
 
   constructor(data?: IArticle) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+}
+
+export class LoginResponse {
+  accessToken: string;
+}
+
+export class TokenUser implements ITokenUser {
+  sub: string;
+  name: string;
+  email: string;
+  exp: number;
+  role: UserRole;
+
+  constructor(data?: ITokenUser) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+}
+
+export class RegisterPatientRequest implements IRegisterPatientRequest {
+  type: string;
+  name: string;
+  email: string;
+  password: string;
+  userId: string;
+  roleId: string;
+
+  constructor(data?: IRegisterPatientRequest) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+}
+
+export class Role implements IRole {
+  roleId: string;
+  name: string;
+
+  constructor(data?: IRole) {
     if (data) {
       for (var property in data) {
         if (data.hasOwnProperty(property))
