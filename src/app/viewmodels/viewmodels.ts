@@ -30,3 +30,15 @@ export interface IArticle {
   image?: IImage;
   video?: IVideo;
 }
+
+export interface IPsychologist {
+  type: string;
+  name: string;
+  email: string;
+  passwordHash: string;
+}
+
+export interface IPsychologistArticleMap {
+  psychologistDetails?: IPsychologist;
+  article?: IArticle[];
+}
