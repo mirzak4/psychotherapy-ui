@@ -1,5 +1,14 @@
 import { UserRole } from './enums';
-import { IArticle, IImage, IRegisterPatientRequest, IRole, IText, ITokenUser, IVideo } from './viewmodels';
+import {
+  IArticle,
+  IImage,
+  IPsychologist,
+  IRegisterPatientRequest,
+  IRole,
+  IText,
+  ITokenUser,
+  IVideo,
+} from './viewmodels';
 
 export class Text implements IText {
   content: string;
@@ -56,6 +65,23 @@ export class Article implements IArticle {
       }
     }
   }
+}
+
+export class Psychologist implements IPsychologist {
+  constructor(data?: IPsychologist) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+  type: string;
+  name: string;
+  email: string;
+  password: string;
+  userId: string;
+  roleId: string;
 }
 
 export class LoginResponse {

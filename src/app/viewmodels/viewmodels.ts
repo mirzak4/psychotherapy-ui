@@ -1,4 +1,4 @@
-import { UserRole } from "./enums";
+import { UserRole } from './enums';
 
 export interface IText {
   content: string;
@@ -47,7 +47,9 @@ export interface IPsychologist {
   type: string;
   name: string;
   email: string;
-  passwordHash: string;
+  password: string;
+  userId: string;
+  roleId: string;
 }
 
 export interface IPsychologistArticleMap {
