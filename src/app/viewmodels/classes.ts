@@ -1,5 +1,5 @@
 import { UserRole } from './enums';
-import { IArticle, IImage, IRegisterPatientRequest, IRole, IText, ITokenUser, IVideo } from './viewmodels';
+import { IArticle, IBreathControl, ICreateBreathContolLogRequest, ICreateMeditationLogRequest, ICreateWalkLogRequest, IImage, IMeditation, IQuestion, IRegisterPatientRequest, IRole, IText, ITokenUser, IUpdateActionDurationTimeRequest, IVideo, IWalk } from './viewmodels';
 
 export class Text implements IText {
   content: string;
@@ -102,6 +102,119 @@ export class Role implements IRole {
   name: string;
 
   constructor(data?: IRole) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+}
+
+export class Question implements IQuestion {
+  question: string;
+  answers: string[];
+  selectedAnswer?: string;
+}
+
+export class Meditation implements IMeditation {
+  music: boolean;
+  stressReliefActionId: string;
+  patientId: string;
+  startedAt: string;
+  durationTime: number;
+
+  constructor(data?: IMeditation) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+}
+
+export class BreathControl implements IBreathControl {
+  tempo: number;
+  stressReliefActionId: string;
+  patientId: string;
+  startedAt: string;
+  durationTime: number;
+
+  constructor(data?: IBreathControl) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+}
+
+export class Walk implements IWalk {
+  kilometers: number;
+  stressReliefActionId: string;
+  patientId: string;
+  startedAt: string;
+  durationTime: number;
+
+  constructor(data?: IWalk) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+}
+
+export class CreateMeditationLogRequest implements ICreateMeditationLogRequest {
+  patientId: string;
+  music: boolean;
+
+  constructor(data?: ICreateMeditationLogRequest) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+}
+
+export class CreateBreathControlLogRequest implements ICreateBreathContolLogRequest {
+  patientId: string;
+  tempo: number;
+
+  constructor(data?: ICreateBreathContolLogRequest) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+}
+
+export class CreateWalkLogRequest implements ICreateWalkLogRequest {
+  patientId: string;
+  kilometers: number;
+
+  constructor(data?: ICreateWalkLogRequest) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+}
+
+export class UpdateActionDurationTimeRequest implements IUpdateActionDurationTimeRequest {
+  stressReliefActionId: string;
+  durationTime: number;
+
+  constructor(data?: IUpdateActionDurationTimeRequest) {
     if (data) {
       for (var property in data) {
         if (data.hasOwnProperty(property))

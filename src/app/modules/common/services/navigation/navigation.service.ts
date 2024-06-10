@@ -21,8 +21,13 @@ export class NavigationService {
       roles: [UserRole.Psychologist, UserRole.Patient],
     },
     {
+      label: 'Your Reports',
+      link: 'reports',
+      roles: [UserRole.Patient]
+    },
+    {
       label: 'Stress Relief',
-      link: '/stress-relief',
+      link: '/patient/stress-relief',
       roles: [UserRole.Patient]
     }
   ];

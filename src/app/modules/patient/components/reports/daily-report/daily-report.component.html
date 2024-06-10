@@ -1,0 +1,50 @@
+<div class="bg-slate-200 w-full h-full pt-9 pl-12 pb-8 overflow-auto">
+    <h1 class="text-4xl font-bold">How are you feeling today?</h1>
+    <h3 class="text-xl mt-8">Please answer on questions provided below.</h3>
+    <span class="italic mt-4">After you submit the form, your daily report will be created.</span>
+    <div class="flex flex-row gap-x-48">
+        <form class="flex flex-col h-full w-[600px] mt-5 gap-y-8">
+            @for (question of questions; track $index) {
+                <div class="flex flex-row items-center">
+                    <div class="w-2/6">
+                        <img class="w-[150px] h-[150px] rounded-lg" [src]="coverImageUrls[$index]" alt="">
+                    </div>
+                    <div class="w-4/6">
+                        <h4 class="font-bold text-xl mb-2">{{ question.question }}</h4>
+                        <ul class="text-lg">
+                            @for (answer of question.answers; track $index) {
+                                <li class="mt-1.5" (click)="question.selectedAnswer = answer">
+                                    <div 
+                                        class="px-3 cursor-pointer border border-solid border-indigo-800 bg-indigo-200"
+                                        [ngClass]="{
+                                            'hover:bg-indigo-100': question.selectedAnswer !== answer,
+                                            'bg-emerald-300': question.selectedAnswer === answer
+                                        }">
+                                        {{ answer }}
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+        </form>
+        <div class="w-[250px] flex flex-col pt-44 items-center">
+            <h3 class="font-bold text-xl line-clamp-2 text-center mb-3">
+                How would you rate your overall mood for today?
+            </h3>
+            <img class="w-28 h-28" [src]="sliderEmoji" alt="">
+            <mat-slider min="0" max="100" step="1" showTickMarks discrete [displayWith]="formatEmotionSlider">
+                <input matSliderThumb #sliderInput>
+            </mat-slider>
+        </div>
+    </div>
+    <div class="mt-12 flex justify-center">
+        <button
+            mat-flat-button
+            class="bg-grey-darker text-white"
+        >
+            Save Daily Report
+        </button>
+    </div>
+</div>

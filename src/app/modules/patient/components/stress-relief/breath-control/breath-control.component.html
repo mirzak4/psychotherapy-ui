@@ -1,0 +1,81 @@
+<div class="flex w-full h-full bg-cover bg-[url('https://img.freepik.com/free-photo/beautiful-outdoor-view-with-tropical-beach-sea_74190-6852.jpg')] overflow-auto">
+    <div class="relative flex flex-col w-full h-full bg-slate-200 bg-opacity-50 items-center pt-36 overflow-auto pb-8">
+        <button 
+            *ngIf="!timerValue" 
+            class="absolute top-[18px] right-[24px] w-12 h-12" 
+            mat-icon-button
+            matTooltip="End breath control session"
+            (click)="endBreathControlSession()">
+            <mat-icon class="scale-[2]">close</mat-icon>
+        </button>
+        <ng-container *ngIf="!breathingStarted">
+            <h1 [@fadeInOut]="{ value: '', params: { duration: 3000 } }" class="font-bold text-4xl mb-4">Breath Control</h1>
+            <h3 [@fadeInOut]="{ value: '', params: { duration: 3000 } }" class="text-2xl text-indigo-800 mb-6">
+                In this exercise, you'll match how long you breathe in with how long you breathe out.
+                <br> 
+                You will be able to choose custom tempo (we suggest starting from shorter rates).
+            </h3>
+            <div class="text-xl bg-white bg-opacity-40 p-3 rounded-lg">
+                <h5 [@fadeInOut]="{ value: '', params: { duration: 3000 } }" class="font-bold text-xl">How to Practice:</h5>
+                <ul [@fadeInOut]="{ value: '', params: { duration: 3000 } }">
+                    <li>Sit comfortably on the floor or in a chair.</li>
+                    <li>When you hear the sound, breathe in through your nose.</li>
+                    <li>After second sound, breathe out through your nose.</li>
+                    <li>Repeat several times following background piano noise.</li>
+                </ul>
+            </div>
+            <div class="mt-4 flex flex-col items-center gap-y-2">
+                Choose your tempo
+                <div>
+                    <button
+                    mat-icon-button
+                    class="w-16 h-16 rounded-full"
+                    [ngClass]="{ 'bg-white': tempo === 5 }"
+                    matTooltip="5 seconds duration"
+                    (click)="tempo = 5"
+                    >
+                    5s
+                </button>
+                <button
+                    mat-icon-button
+                    class="w-16 h-16 rounded-full"
+                    [ngClass]="{ 'bg-white': tempo === 10 }"
+                    matTooltip="10 seconds duration"
+                    (click)="tempo = 10"
+                    >
+                    10s
+                </button>
+                <button
+                    mat-icon-button
+                    class="w-16 h-16 rounded-full"
+                    [ngClass]="{ 'bg-white': tempo === 15 }"
+                    matTooltip="15 seconds duration"
+                    (click)="tempo = 15"
+                    >
+                    15s
+                </button>
+                </div>
+            </div>
+            <div 
+                (click)="startBreathControl()" 
+                [@fadeInOut]="{ value: '', params: { duration: 3000 } }" 
+                class="cursor-pointer mt-6 flex flex-col items-center gap-y-2 font-bold text-green-800 hover:text-green-500">
+                <button
+                    mat-icon-button
+                    class="w-24 h-24 text-inherit"
+                    >
+                    <mat-icon class="text-inherit scale-[5]">play_arrow</mat-icon>
+                </button>
+                <span class="text-black">Start Breath Control</span>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="breathingStarted">
+            <h1 *ngIf="timerValue" class="font-bold text-4xl">
+                Exercise starts in {{ timerValue }}...
+            </h1>
+        </ng-container>
+        <ng-container *ngIf="exerciseMessage">
+            <h1 class="text-4xl">{{ exerciseMessage }}</h1>
+        </ng-container>
+    </div>
+</div>

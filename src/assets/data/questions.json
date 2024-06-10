@@ -1,0 +1,194 @@
+[
+    {
+        "question": "How are you feeling right now?",
+        "answers": ["Happy", "Sad", "Anxious", "Calm", "Angry", "Neutral"]
+    },
+    {
+        "question": "How did you sleep last night?",
+        "answers": ["Very well", "Well", "Okay", "Poorly", "Very poorly"]
+    },
+    {
+        "question": "Have you been experiencing any stress today?",
+        "answers": ["Yes, a lot", "Yes, a little", "No, not at all"]
+    },
+    {
+        "question": "How would you rate your overall mood this week?",
+        "answers": ["Very good", "Good", "Neutral", "Bad", "Very bad"]
+    },
+    {
+        "question": "Have you felt anxious or worried recently?",
+        "answers": ["Yes, frequently", "Yes, occasionally", "No, not at all"]
+    },
+    {
+        "question": "Do you feel you have enough support from friends or family?",
+        "answers": ["Yes, definitely", "Yes, somewhat", "No, not really", "No, not at all"]
+    },
+    {
+        "question": "How often do you feel overwhelmed by your responsibilities?",
+        "answers": ["Always", "Often", "Sometimes", "Rarely", "Never"]
+    },
+    {
+        "question": "Have you been able to enjoy activities you like?",
+        "answers": ["Yes, often", "Yes, occasionally", "No, rarely", "No, never"]
+    },
+    {
+        "question": "How would you describe your energy levels today?",
+        "answers": ["Very high", "High", "Moderate", "Low", "Very low"]
+    },
+    {
+        "question": "Have you been feeling more irritable than usual?",
+        "answers": ["Yes, a lot", "Yes, somewhat", "No, not really", "No, not at all"]
+    },
+    {
+        "question": "Do you feel hopeful about the future?",
+        "answers": ["Yes, very hopeful", "Yes, somewhat hopeful", "Neutral", "No, somewhat hopeless", "No, very hopeless"]
+    },
+    {
+        "question": "How often do you feel lonely?",
+        "answers": ["Always", "Often", "Sometimes", "Rarely", "Never"]
+    },
+    {
+        "question": "Have you been able to manage your daily tasks effectively?",
+        "answers": ["Yes, very effectively", "Yes, somewhat effectively", "No, not very effectively", "No, not at all effectively"]
+    },
+    {
+        "question": "How do you feel about your progress in therapy?",
+        "answers": ["Very satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very dissatisfied"]
+    },
+    {
+        "question": "Do you feel in control of your emotions?",
+        "answers": ["Yes, always", "Yes, most of the time", "Sometimes", "No, rarely", "No, never"]
+    },
+    {
+        "question": "Have you had any positive interactions with others today?",
+        "answers": ["Yes, many", "Yes, a few", "No, not really", "No, none"]
+    },
+    {
+        "question": "How often do you feel overwhelmed by negative thoughts?",
+        "answers": ["Always", "Often", "Sometimes", "Rarely", "Never"]
+    },
+    {
+        "question": "Have you been feeling more self-confident recently?",
+        "answers": ["Yes, much more", "Yes, a little more", "No, about the same", "No, less confident"]
+    },
+    {
+        "question": "Do you find it difficult to relax?",
+        "answers": ["Yes, very difficult", "Yes, somewhat difficult", "No, not really", "No, not at all"]
+    },
+    {
+        "question": "How often do you feel optimistic about your life?",
+        "answers": ["Always", "Often", "Sometimes", "Rarely", "Never"]
+    },
+    {
+        "question": "Have you experienced any physical symptoms of stress (e.g., headaches, stomach aches)?",
+        "answers": ["Yes, frequently", "Yes, occasionally", "No, rarely", "No, never"]
+    },
+    {
+        "question": "How connected do you feel with others around you?",
+        "answers": ["Very connected", "Somewhat connected", "Neutral", "Somewhat disconnected", "Very disconnected"]
+    },
+    {
+        "question": "Have you felt productive today?",
+        "answers": ["Yes, very productive", "Yes, somewhat productive", "No, not very productive", "No, not at all productive"]
+    },
+    {
+        "question": "Do you feel like you are handling your emotions in a healthy way?",
+        "answers": ["Yes, definitely", "Yes, somewhat", "No, not really", "No, not at all"]
+    },
+    {
+        "question": "How satisfied are you with your social life?",
+        "answers": ["Very satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very dissatisfied"]
+    },
+    {
+        "question": "Have you been able to stick to your routines?",
+        "answers": ["Yes, very well", "Yes, somewhat", "No, not really", "No, not at all"]
+    },
+    {
+        "question": "Do you feel a sense of purpose in your daily activities?",
+        "answers": ["Yes, very much", "Yes, somewhat", "No, not really", "No, not at all"]
+    },
+    {
+        "question": "How often do you feel content with your life?",
+        "answers": ["Always", "Often", "Sometimes", "Rarely", "Never"]
+    },
+    {
+        "question": "Do you find it difficult to focus on tasks?",
+        "answers": ["Yes, very difficult", "Yes, somewhat difficult", "No, not really", "No, not at all"]
+    },
+    {
+        "question": "Have you experienced any mood swings recently?",
+        "answers": ["Yes, frequently", "Yes, occasionally", "No, rarely", "No, never"]
+    },
+    {
+        "question": "How often do you feel at peace?",
+        "answers": ["Always", "Often", "Sometimes", "Rarely", "Never"]
+    },
+    {
+        "question": "Do you feel like you are making progress towards your goals?",
+        "answers": ["Yes, definitely", "Yes, somewhat", "No, not really", "No, not at all"]
+    },
+    {
+        "question": "How satisfied are you with your work or school performance?",
+        "answers": ["Very satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very dissatisfied"]
+    },
+    {
+        "question": "Do you feel supported by your peers?",
+        "answers": ["Yes, very much", "Yes, somewhat", "No, not really", "No, not at all"]
+    },
+    {
+        "question": "Have you been feeling more creative recently?",
+        "answers": ["Yes, much more", "Yes, a little more", "No, about the same", "No, less creative"]
+    },
+    {
+        "question": "How often do you feel excited about the future?",
+        "answers": ["Always", "Often", "Sometimes", "Rarely", "Never"]
+    },
+    {
+        "question": "Do you find it hard to stay motivated?",
+        "answers": ["Yes, very hard", "Yes, somewhat hard", "No, not really", "No, not at all"]
+    },
+    {
+        "question": "How do you feel about your physical health?",
+        "answers": ["Very healthy", "Healthy", "Neutral", "Unhealthy", "Very unhealthy"]
+    },
+    {
+        "question": "Have you felt more irritable or angry than usual?",
+        "answers": ["Yes, a lot", "Yes, somewhat", "No, not really", "No, not at all"]
+    },
+    {
+        "question": "How often do you feel appreciated by others?",
+        "answers": ["Always", "Often", "Sometimes", "Rarely", "Never"]
+    },
+    {
+        "question": "Do you feel like you are in control of your life?",
+        "answers": ["Yes, very much", "Yes, somewhat", "No, not really", "No, not at all"]
+    },
+    {
+        "question": "How often do you feel down or depressed?",
+        "answers": ["Always", "Often", "Sometimes", "Rarely", "Never"]
+    },
+    {
+        "question": "Have you been able to cope with difficult situations effectively?",
+        "answers": ["Yes, very effectively", "Yes, somewhat effectively", "No, not very effectively", "No, not at all effectively"]
+    },
+    {
+        "question": "How do you feel about your self-esteem?",
+        "answers": ["Very high", "High", "Neutral", "Low", "Very low"]
+    },
+    {
+        "question": "Do you feel like you are growing as a person?",
+        "answers": ["Yes, definitely", "Yes, somewhat", "No, not really", "No, not at all"]
+    },
+    {
+        "question": "How satisfied are you with your personal relationships?",
+        "answers": ["Very satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very dissatisfied"]
+    },
+    {
+        "question": "Do you feel like you have a good work-life balance?",
+        "answers": ["Yes, definitely", "Yes, somewhat", "No, not really", "No, not at all"]
+    },
+    {
+        "question": "How often do you feel like you can be yourself around others?",
+        "answers": ["Always", "Often", "Sometimes", "Rarely", "Never"]
+    }
+]

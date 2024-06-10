@@ -1,0 +1,11 @@
+::ng-deep {
+    .mat-mdc-slider-visual-thumb {
+        .mdc-slider__value-indicator-container {
+            .mdc-slider__value-indicator {
+                height: auto!important;
+                padding-top: 2px!important;
+                padding-bottom: 2px!important;
+            }
+        }
+    }
+}
