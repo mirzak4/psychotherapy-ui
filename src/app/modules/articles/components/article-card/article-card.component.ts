@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { Article } from '../../../../viewmodels/classes';
+import { Article, ExpendedArticle } from '../../../../viewmodels/classes';
 import { Router } from '@angular/router';
 import { ArticleService } from '../../services/article.service';
 
@@ -14,14 +14,15 @@ import { ArticleService } from '../../services/article.service';
   styleUrl: './article-card.component.scss',
 })
 export class ArticleCardComponent {
-  @Input() article: Article;
+  @Input() expandedArticle: ExpendedArticle;
 
   constructor(private articleService: ArticleService, private router: Router) {}
 
   onViewClick(): void {
-    this.router.navigate(['/articles/article', this.article.id]);
-    this.articleService.setCurrentArticle(this.article);
-
-    //console.log('Video URL:', this.article.video.videoUrl);
+    this.router.navigate([
+      '/articles/article',
+      this.expandedArticle.article.id,
+    ]);
+    this.articleService.setCurrentArticle(this.expandedArticle);
   }
 }

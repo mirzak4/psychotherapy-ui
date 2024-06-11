@@ -1,6 +1,7 @@
 import { UserRole } from './enums';
 import {
   IArticle,
+  IExpandedArticle,
   IImage,
   IPsychologist,
   IRegisterPatientRequest,
@@ -65,6 +66,19 @@ export class Article implements IArticle {
       }
     }
   }
+}
+
+export class ExpendedArticle implements IExpandedArticle {
+  constructor(data?: IExpandedArticle) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+  article: IArticle;
+  authorName: string;
 }
 
 export class Psychologist implements IPsychologist {

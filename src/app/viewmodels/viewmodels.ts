@@ -56,3 +56,8 @@ export interface IPsychologistArticleMap {
   psychologistDetails?: IPsychologist;
   article?: IArticle[];
 }
+
+export interface IExpandedArticle {
+  article: IArticle;
+  authorName: string;
+}

@@ -11,24 +11,24 @@ import { environment } from '../../../../environment/environment';
   providedIn: 'root',
 })
 export class ArticleService {
-  private currentArticleSource = new BehaviorSubject<any>(null);
-  private _articles: BehaviorSubject<IPsychologistArticleMap[]> =
-    new BehaviorSubject<IPsychologistArticleMap[]>([]);
-  currentArticle$ = this.currentArticleSource.asObservable();
+  private currentExpandedArticleSource = new BehaviorSubject<any>(null);
+
+  //private _articles: BehaviorSubject<IPsychologistArticleMap[]> = new BehaviorSubject<IPsychologistArticleMap[]>([]);
+
+  currentArticle$ = this.currentExpandedArticleSource.asObservable();
   private _http = inject(HttpClient);
 
-  get articles$(): Observable<IPsychologistArticleMap[]> {
+  /*get articles$(): Observable<IPsychologistArticleMap[]> {
     return this._articles.asObservable();
-  }
+  }*/
 
   constructor() {}
 
-  setCurrentArticle(article: any) {
-    this.currentArticleSource.next(article);
-    // this.currentArticleSource.complete
+  setCurrentArticle(expandedArticle: any) {
+    this.currentExpandedArticleSource.next(expandedArticle);
   }
 
-  getAllArticles() {
+  /*getAllArticles() {
     return this._http
       .get<IPsychologistArticleMap[]>(environment.apiUrl + 'articles/all')
       .pipe(
@@ -36,5 +36,5 @@ export class ArticleService {
           this._articles.next(result);
         })
       );
-  }
+  }*/
 }
