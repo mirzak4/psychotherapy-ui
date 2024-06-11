@@ -1,15 +1,22 @@
 import { UserRole } from './enums';
-import { IArticle, IBreathControl, ICreateBreathContolLogRequest, ICreateMeditationLogRequest, ICreateWalkLogRequest, IImage, IMeditation, IQuestion, IRegisterPatientRequest, IRole, IText, ITokenUser, IUpdateActionDurationTimeRequest, IVideo, IWalk } from './viewmodels';
 import {
   IArticle,
+  IBreathControl,
+  ICreateBreathContolLogRequest,
+  ICreateMeditationLogRequest,
+  ICreateWalkLogRequest,
   IExpandedArticle,
   IImage,
+  IMeditation,
   IPsychologist,
+  IQuestion,
   IRegisterPatientRequest,
   IRole,
   IText,
   ITokenUser,
+  IUpdateActionDurationTimeRequest,
   IVideo,
+  IWalk,
 } from './viewmodels';
 
 export class Text implements IText {
@@ -223,7 +230,9 @@ export class CreateMeditationLogRequest implements ICreateMeditationLogRequest {
   }
 }
 
-export class CreateBreathControlLogRequest implements ICreateBreathContolLogRequest {
+export class CreateBreathControlLogRequest
+  implements ICreateBreathContolLogRequest
+{
   patientId: string;
   tempo: number;
 
@@ -251,7 +260,9 @@ export class CreateWalkLogRequest implements ICreateWalkLogRequest {
   }
 }
 
-export class UpdateActionDurationTimeRequest implements IUpdateActionDurationTimeRequest {
+export class UpdateActionDurationTimeRequest
+  implements IUpdateActionDurationTimeRequest
+{
   stressReliefActionId: string;
   durationTime: number;
 
