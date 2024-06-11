@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, switchMap, tap } from 'rxjs';
 import {
   IArticle,
   IPsychologistArticleMap,
 } from '../../../viewmodels/viewmodels';
-import { environment } from '../../../../environment/environment';
+import { environment } from '../../../environment';
 
 @Injectable({
   providedIn: 'root',
@@ -13,14 +13,15 @@ import { environment } from '../../../../environment/environment';
 export class ArticleService {
   private currentExpandedArticleSource = new BehaviorSubject<any>(null);
 
-  //private _articles: BehaviorSubject<IPsychologistArticleMap[]> = new BehaviorSubject<IPsychologistArticleMap[]>([]);
+  private _articles: BehaviorSubject<IPsychologistArticleMap[]> =
+    new BehaviorSubject<IPsychologistArticleMap[]>([]);
 
   currentArticle$ = this.currentExpandedArticleSource.asObservable();
   private _http = inject(HttpClient);
 
-  /*get articles$(): Observable<IPsychologistArticleMap[]> {
+  get articles$(): Observable<IPsychologistArticleMap[]> {
     return this._articles.asObservable();
-  }*/
+  }
 
   constructor() {}
 
@@ -28,13 +29,15 @@ export class ArticleService {
     this.currentExpandedArticleSource.next(expandedArticle);
   }
 
-  /*getAllArticles() {
+  getAllArticles() {
     return this._http
-      .get<IPsychologistArticleMap[]>(environment.apiUrl + 'articles/all')
+      .get<IPsychologistArticleMap[]>(
+        environment.apiUrl + 'articleservice/articles/all'
+      )
       .pipe(
         tap((result) => {
           this._articles.next(result);
         })
       );
-  }*/
+  }
 }

@@ -99,7 +99,7 @@ export interface IPsychologist {
 
 export interface IPsychologistArticleMap {
   psychologistDetails?: IPsychologist;
-  article?: IArticle[];
+  articles?: IArticle[];
 }
 
 export interface IExpandedArticle {
