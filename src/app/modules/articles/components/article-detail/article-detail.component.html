@@ -4,14 +4,14 @@
       <h1 class="w-9/12 font-bold text-black text-4xl mb-2 ml-50 text-justify">
         {{ expandedArticle.article.title }}
       </h1>
-      <button
+      <!--<button
         mat-flat-button
         class="pl-5 pr-5 bg-grey-darker rounded-full p-3 shadow-lg text-base font-medium text-grey-lightest"
         (click)="openEditArticleModal()"
       >
         Edit Article
       </button>
-    </div>
+    --></div>
 
     <h3 class="mb-10 text-slate-500">By {{ expandedArticle.authorName }}</h3>
 
@@ -27,12 +27,12 @@
       <p class="font-sans w-4/5 text-lg mb-10">{{ paragraph }}</p>
     </div>
 
-    <div *ngIf="expandedArticle.article.video?.videoUrl">
+    <!-- <div *ngIf="expandedArticle.article.video?.videoUrl">
       <video
         [src]="expandedArticle.article.video.videoUrl"
         controls
         class="w-full h-full"
       ></video>
     </div>
-  </div>
+  --></div>
 </div>

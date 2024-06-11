@@ -1,4 +1,4 @@
-<div class="w-full h-full bg-slate-300">
+<div class="w-full h-full overflow-auto bg-slate-300">
   <div class="flex flex-col w-full h-full pl-[48px] pt-[36px]">
     <div class="flex flex-row">
       <h1 class="w-9/12 font-bold text-black text-4xl mb-10">
@@ -13,7 +13,7 @@
       </button>
     </div>
 
-    <div class="grid gap-x-0 grid-cols-3 mt-5 content-evenly">
+    <div class="grid gap-x-0 gap-y-10 grid-cols-3 mt-5 content-evenly">
       <ng-container *ngFor="let expandedArticle of allExpandedArticles">
         <app-article-card
           class="w-[300px]"
