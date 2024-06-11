@@ -41,7 +41,7 @@ export class SignInComponent {
     if (this.signInForm.valid) {
       this._authService.signIn(this.signInForm.get('email')?.value, this.signInForm.get('password')?.value)
         .subscribe(() => {
-          this._router.navigate(['/articles']);
+          this._router.navigate(['patient/psychologist-select']);
         });
     }
   }

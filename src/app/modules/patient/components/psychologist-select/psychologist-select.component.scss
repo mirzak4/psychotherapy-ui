@@ -1,0 +1,19 @@
+// .select-btn {
+//     opacity: 0!important;
+// }
+// .card-container:hover .select-btn {
+//     opacity: 1!important;
+// }
+
+::ng-deep {
+    .cdk-virtual-scroll-viewport {
+        .cdk-virtual-scroll-content-wrapper {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+        }
+    }
+    .cdk-virtual-scroll-viewport::-webkit-scrollbar{
+        display: none;
+    }
+}

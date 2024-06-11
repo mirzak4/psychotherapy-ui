@@ -106,24 +106,24 @@ export class AuthService {
   }
 
   getAllSystemRoles(): Role[] {
-    // return this._systemRoles;
-    return [
-      {
-        roleId: '334e6b37-a502-4f77-9aa7-6350bf82bf82',
-        name: 'Administrator'
-      },
-      {
-        roleId: '57fc36a7-66fc-4442-a8fd-6c800cdc58e7',
-        name: 'Patient'
-      },
-      {
-        roleId: '7cc454ab-65b7-4dbb-9068-76b98589f801',
-        name: 'Psychologist'
-      }
-    ]
+    return this._systemRoles;
+    // return [
+    //   {
+    //     roleId: '805f349f-dc46-4eaa-b4b2-20bb2a1e77ce',
+    //     name: 'Administrator'
+    //   },
+    //   {
+    //     roleId: 'e4aaef69-2a78-4ec2-8047-283fe0eedcb4',
+    //     name: 'Patient'
+    //   },
+    //   {
+    //     roleId: 'b6fce159-9d1d-417a-93da-19111cad606c',
+    //     name: 'Psychologist'
+    //   }
+    // ]
   }
 
-  getAllRoles() {
+  fetchAllRoles() {
     return this._http.get<IRole[]>(environment.apiUrl + 'userservice/roles').pipe(
       tap((roles: IRole[]) => this._systemRoles = roles)
     );

@@ -1,0 +1,62 @@
+<div class="flex w-full h-full bg-cover bg-[url('https://m.zenmix.io/mm/header.jpg')]">
+    <div class="relative flex flex-col w-full h-full bg-slate-200 bg-opacity-50 items-center pt-36">
+        <button 
+            *ngIf="!timerValue" 
+            class="absolute top-[18px] right-[24px] w-12 h-12" 
+            mat-icon-button
+            matTooltip="End meditation session"
+            (click)="endMeditationSession()">
+            <mat-icon class="scale-[2]">close</mat-icon>
+        </button>
+        <ng-container *ngIf="!meditationStarted">
+            <h1 [@fadeInOut]="{ value: '', params: { duration: 3000 } }" class="font-bold text-4xl mb-4">Mindfulness Meditation</h1>
+            <h3 [@fadeInOut]="{ value: '', params: { duration: 3000 } }" class="text-2xl text-indigo-800 mb-6">Objective: Focus on the present moment, observing thoughts, emotions, and sensations without judgment.</h3>
+            <div class="text-xl bg-white bg-opacity-40 p-3 rounded-lg">
+                <h5 [@fadeInOut]="{ value: '', params: { duration: 3000 } }" class="font-bold text-xl">How to Practice:</h5>
+                <ul [@fadeInOut]="{ value: '', params: { duration: 3000 } }">
+                    <li>Find a quiet and comfortable place to sit.</li>
+                    <li>Close your eyes and take deep breaths.</li>
+                    <li>Pay attention to the sensation of your breath entering and leaving your nostrils.</li>
+                    <li>If your mind wanders, gently bring your focus back to your breath.</li>
+                </ul>
+            </div>
+            <div 
+                (click)="startMeditation()" 
+                [@fadeInOut]="{ value: '', params: { duration: 3000 } }" 
+                class="cursor-pointer mt-6 flex flex-col items-center gap-y-2 font-bold text-green-800 hover:text-green-500">
+                <button
+                    mat-icon-button
+                    class="w-24 h-24 text-inherit"
+                    >
+                    <mat-icon class="text-inherit scale-[5]">play_arrow</mat-icon>
+                </button>
+                <span class="text-black">Start Meditation</span>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="meditationStarted">
+            <h1 *ngIf="timerValue" class="font-bold text-4xl">
+                Music starts in {{ timerValue }}...
+            </h1>
+            <div *ngIf="!timerValue" class="absolute bottom-[18px] right-[24px]">
+                <button
+                    *ngIf="audio.paused"
+                    mat-icon-button
+                    class="w-16 h-16 text-blue-700 text-green-800"
+                    matTooltip="Play music"
+                    (click)="playMusic()"
+                    >
+                    <mat-icon class="text-inherit scale-[3]">play_arrow</mat-icon>
+                </button>
+                <button
+                    *ngIf="!audio.paused"
+                    mat-icon-button
+                    class="w-16 h-16 text-yellow-700"
+                    matTooltip="Pause music"
+                    (click)="pauseMusic()"
+                    >
+                    <mat-icon class="scale-[3]">pause</mat-icon>
+                </button>
+            </div>
+        </ng-container>
+    </div>
+</div>

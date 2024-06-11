@@ -43,6 +43,51 @@ export interface IRole {
   name: string;
 }
 
+export interface IQuestion {
+  question: string;
+  answers: string[];
+  selectedAnswer?: string;
+}
+
+export interface IStresReliefAction {
+  stressReliefActionId: string;
+  patientId: string;
+  startedAt: string;
+  durationTime: number;
+}
+
+export interface IMeditation extends IStresReliefAction {
+  music: boolean;
+}
+
+export interface IBreathControl extends IStresReliefAction {
+  tempo: number;
+}
+
+export interface IWalk extends IStresReliefAction {
+  kilometers: number;
+}
+
+export interface ICreateMeditationLogRequest {
+  patientId: string;
+  music: boolean;
+}
+
+export interface ICreateBreathContolLogRequest {
+  patientId: string;
+  tempo: number;
+}
+
+export interface ICreateWalkLogRequest {
+  patientId: string;
+  kilometers: number;
+}
+
+export interface IUpdateActionDurationTimeRequest {
+  stressReliefActionId: string;
+  durationTime: number;
+}
+
 export interface IPsychologist {
   type: string;
   name: string;

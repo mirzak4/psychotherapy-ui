@@ -1,0 +1,82 @@
+<div class="flex w-full h-full bg-cover bg-[url('https://lh4.googleusercontent.com/proxy/Z4QLcEQBA31zMNiwOCUQZMD4K4bHN-pzj8ve69nvI4kDC3yMWQtlGBhmRTNymgEPOMPCua2JG01BYhR7HAbon0dQVQwDDVRw0AYfh2U7RV9RfYb5ezSnpWFd1rYbGq_VSp7wmflNZ0IYpvI')] overflow-auto">
+    <div class="relative flex flex-col w-full h-full bg-slate-200 bg-opacity-50 items-center pt-36 overflow-auto pb-8">
+        <button 
+            *ngIf="!timerValue" 
+            class="absolute top-[18px] right-[24px] w-12 h-12" 
+            mat-icon-button
+            matTooltip="End meditation session"
+            (click)="endWalkingSession()">
+            <mat-icon class="scale-[2]">close</mat-icon>
+        </button>
+        <ng-container *ngIf="!walkingStarted">
+            <h1 [@fadeInOut]="{ value: '', params: { duration: 3000 } }" class="font-bold text-4xl mb-4">Walking for health</h1>
+            <h3 [@fadeInOut]="{ value: '', params: { duration: 3000 } }" class="text-2xl text-indigo-800 mb-6">Objective: Get more active, lose weight and become healthier.</h3>
+            <div class="text-xl bg-white bg-opacity-40 p-3 rounded-lg w-[500px] mb-3">
+                <h5 [@fadeInOut]="{ value: '', params: { duration: 3000 } }" class="font-bold text-xl">Before you start:</h5>
+                <div class="flex flex-col gap-y-3">
+                    <p class="line-clamp-2">
+                        Any shoes or trainers that are comfortable, provide adequate support and do not cause blisters will do.
+                    </p>
+                    <p class="line-clamp-2">
+                        If you're walking to work, you could wear your usual work clothes with a comfy pair of shoes and change shoes when you get into work.
+                    </p>
+                    <p class="line-clamp-2">
+                        For long walks, you may want to take some water, healthy snacks, a spare top, sunscreen and a sun hat in a small backpack.
+                    </p>
+                    <p class="line-clamp-2">
+                        If you start going for longer walks regularly, you may want to invest in a waterproof jacket and some specialist walking shoes for more challenging routes.
+                    </p>
+                </div>
+            </div>
+            <div class="text-xl bg-white bg-opacity-40 p-3 rounded-lg w-[500px] mb-3">
+                <h5 [@fadeInOut]="{ value: '', params: { duration: 3000 } }" class="font-bold text-xl">Make it a habit:</h5>
+                <div class="flex flex-col gap-y-3">
+                    <p>
+                        The easiest way to walk more is to make walking a habit.
+                    </p>
+                    <p>
+                        Think of ways to include walking in your daily routine.
+                    </p>
+                    <div>
+                        Examples include:
+                        <ul class="ml-[20px]">
+                            <li class="list-disc">Walking part of your journey to work</li>
+                            <li class="list-disc">Walking to the shops</li>
+                            <li class="list-disc">Using the stairs instead of the lift</li>
+                            <li class="list-disc">Leaving the car behind for short journeys</li>
+                            <li class="list-disc">Walking the kids to school</li>
+                            <li class="list-disc">Doing a regular walk with a friend</li>
+                            <li class="list-disc">Going for a stroll with family or friends after dinner</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="text-xl bg-white bg-opacity-40 p-3 rounded-lg w-[500px]">
+                <h5 [@fadeInOut]="{ value: '', params: { duration: 3000 } }" class="font-bold text-xl">Instructions:</h5>
+                Before you go out for a walk, click on <span class="text-green-800 font-bold">Start Walking Session button.</span>
+                Timer for logging your walk time will start. 
+                When you get back, press button to stop session.
+            </div>
+            <div 
+                (click)="startWalkingSession()" 
+                [@fadeInOut]="{ value: '', params: { duration: 3000 } }" 
+                class="cursor-pointer mt-6 flex flex-col items-center gap-y-2 font-bold text-green-800 hover:text-green-500">
+                <button
+                    mat-icon-button
+                    class="w-24 h-24 text-inherit"
+                    >
+                    <mat-icon class="text-inherit scale-[5]">play_arrow</mat-icon>
+                </button>
+                <span class="text-black">Start Walking Session</span>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="walkingStarted">
+            <h1 *ngIf="timerValue" class="font-bold text-4xl">
+                Session starts in {{ timerValue }}...
+            </h1>
+        </ng-container>
+        <ng-container *ngIf="!timerValue">
+            <h1 class="text-4xl">When you get back, click <span class="font-bold">X</span> to end session</h1>
+        </ng-container>
+    </div>
+</div>

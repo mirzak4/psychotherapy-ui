@@ -1,0 +1,7 @@
+<div class="flex flex-col items-center w-[650px] p-8">
+    <h2 class="font-bold text-3xl mb-6">How many kilometers have you covered?</h2>
+    <mat-form-field>
+        <input matInput min="1" type="number" class="mb-4" [(ngModel)]="distanceCovered">
+    </mat-form-field>
+    <button [disabled]="!distanceCovered || distanceCovered<= 0" class="bg-grey-darker text-white" mat-flat-button (click)="proceed()">Proceed</button>
+</div>

@@ -7,9 +7,9 @@ import { AuthService } from './modules/auth/services/auth.service';
 export const routes: Routes = [
   {
     path: '',
-    // resolve: {
-    //   systemRoles: () => inject(AuthService).getAllRoles()
-    // },
+    resolve: {
+      systemRoles: () => inject(AuthService).fetchAllRoles()
+    },
     children: [
       {
         path: '',
@@ -26,6 +26,10 @@ export const routes: Routes = [
         path: 'articles',
         loadChildren: () => import('./modules/articles/articles.routes'),
       },
+      {
+        path: 'patient',
+        loadChildren: () => import('./modules/patient/patient.routes')
+      }
     ]
   }
 ];

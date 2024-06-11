@@ -1,0 +1,21 @@
+<div class="bg-[url('https://i.ytimg.com/vi/49EO2JeuvIo/maxresdefault.jpg')] w-full h-full">
+    <div class="w-full h-full bg-slate-200 bg-opacity-50 pt-44 pb-8">
+        <div class="flex flex-col items-center justify-center">
+            <h1 class="font-bold text-4xl">What kind of stress relief you would like to do?</h1>
+            <div class="flex flex-row gap-x-20">
+                <div [routerLink]="'meditation'" [@zoomInOut]="actionZoomStates.meditation" (mouseenter)="onMouseEnter('meditation')" (mouseleave)="onMouseLeave('meditation')" class="flex flex-col items-center gap-y-2 cursor-pointer w-[150px] h-[150px] p-5">
+                    <img src="assets/stress-relief/meditation.png" alt="">
+                    <span class="font-bold">Meditation</span>
+                </div>
+                <div [routerLink]="'breath-control'" [@zoomInOut]="actionZoomStates.breath" (mouseenter)="onMouseEnter('breath')" (mouseleave)="onMouseLeave('breath')" class="flex flex-col items-center gap-y-2 cursor-pointer w-[150px] h-[150px] p-5">
+                    <img src="assets/stress-relief/breath.png" alt="">
+                    <span class="font-bold">Breath Control</span>
+                </div>
+                <div [routerLink]="'walk'" [@zoomInOut]="actionZoomStates.walking" (mouseenter)="onMouseEnter('walking')" (mouseleave)="onMouseLeave('walking')" class="flex flex-col items-center gap-y-2 cursor-pointer w-[150px] h-[150px] p-5">
+                    <img src="assets/stress-relief/walking.png" alt="">
+                    <span class="font-bold">Walking</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
