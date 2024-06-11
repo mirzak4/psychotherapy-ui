@@ -32,15 +32,13 @@ export class ArticleModalComponent {
   constructor(
     private _matDialogRef: MatDialogRef<ArticleModalComponent>,
     private _formBuilder: UntypedFormBuilder
-  ) // inject servis i iskoristim clanak
-  {
+  ) {
     this.articleForm = this._formBuilder.group({
       title: ['', Validators.required],
       content: ['', Validators.required],
       imageUrl: ['', Validators.required],
       videoUrl: ['', Validators.required],
     });
-    //
   }
 
   closeModal() {
