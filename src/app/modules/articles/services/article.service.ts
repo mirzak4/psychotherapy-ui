@@ -40,4 +40,23 @@ export class ArticleService {
         })
       );
   }
+
+  createArticle(article: IArticle) {
+    return this._http
+      .post(environment.apiUrl + 'articleservice/articles/add', article)
+      .pipe(switchMap(() => this.getAllArticles()));
+  }
+
+  deleteArticle(articleID: string) {
+    return this._http
+      .delete(
+        `${environment.apiUrl}articleservice/articles/remove/${articleID}`
+      )
+      .pipe(switchMap(() => this.getAllArticles()));
+  }
+
+  updateArticle(articleID: string, updatedArticle: any) {
+    const url = `${environment.apiUrl}articleservice/articles/update/${articleID}`;
+    return this._http.put(url, updatedArticle);
+  }
 }

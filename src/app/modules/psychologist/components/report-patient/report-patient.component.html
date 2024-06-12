@@ -1,4 +1,4 @@
-<h1 class="text-2xl text-slate-600 font-bold mb-10">Publish new article</h1>
+<h1 class="text-2xl text-slate-600 font-bold mb-10">Edit current article</h1>
 <form [formGroup]="articleForm">
   <mat-form-field class="w-full">
     <mat-label>Enter article title</mat-label>
@@ -22,7 +22,7 @@
     </mat-form-field>
     <mat-form-field class="w-1/2">
       <mat-label>Paste your video URL here</mat-label>
-      <input type="text" matInput formControlName="videoUrl" />
+      <input type="text" matInput />
     </mat-form-field>
   </div>
 </form>
@@ -37,9 +37,9 @@
   </button>
   <button
     mat-flat-button
-    class="p-5 hover:bg-black hover:shadow-lg bg-grey-darker rounded-full p-3 shadow-lg text-base font-medium text-grey-lightest"
-    (click)="createArticle()"
+    class="p-5 bg-grey-darker rounded-full p-3 shadow-lg text-base font-medium text-grey-lightest"
   >
     Save
   </button>
 </div>
+

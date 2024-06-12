@@ -16,6 +16,8 @@ import {
   IArticle,
   IPsychologistArticleMap,
 } from '../../../../viewmodels/viewmodels';
+import { AuthService } from '../../../auth/services/auth.service';
+import { UserRole } from '../../../../viewmodels/enums';
 
 @Component({
   selector: 'app-articles',
@@ -32,13 +34,19 @@ import {
 export class ArticlesComponent implements OnInit {
   allExpandedArticles: ExpandedArticle[] = [];
   articlesAndPsychologist: IPsychologistArticleMap[];
+  currentUserRole: UserRole;
 
   constructor(
     private _articlesService: ArticleService,
-    private _dialog: MatDialog
+    private _dialog: MatDialog,
+    private _authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    this._authService.role$().subscribe((role: UserRole) => {
+      this.currentUserRole = role;
+    });
+
     this._articlesService.getAllArticles().subscribe();
     this._articlesService.articles$.subscribe(
       (articlesPsy: IPsychologistArticleMap[]) => {

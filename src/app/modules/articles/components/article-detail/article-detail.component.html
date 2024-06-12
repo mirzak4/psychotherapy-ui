@@ -1,16 +1,27 @@
 <div class="w-full bg-gradient-to-b from-slate-50 to-zinc-400">
   <div class="p-20 content-center">
-    <div class="flex flex-row">
+    <div class="flex justify-between items-start">
       <h1 class="w-9/12 font-bold text-black text-4xl mb-2 ml-50 text-justify">
         {{ expandedArticle.article.title }}
       </h1>
-      <button
-        mat-flat-button
-        class="pl-5 pr-5 bg-grey-darker rounded-full p-3 shadow-lg text-base font-medium text-grey-lightest"
-        (click)="openEditArticleModal()"
-      >
-        Edit Article
-      </button>
+      <div class="flex flex-col space-y-2">
+        <button
+          *ngIf="currentUserRole === 'Psychologist'"
+          mat-flat-button
+          class="p-3 hover:bg-black hover:shadow-lg bg-grey-darker rounded-full shadow-lg text-base font-medium text-grey-lightest"
+          (click)="deleteArticleModal()"
+        >
+          Delete Article
+        </button>
+        <button
+          *ngIf="currentUserRole === 'Psychologist'"
+          mat-flat-button
+          class="p-3 hover:bg-black hover:shadow-lg bg-grey-darker rounded-full shadow-lg text-base font-medium text-grey-lightest"
+          (click)="openEditArticleModal()"
+        >
+          Edit Article
+        </button>
+      </div>
     </div>
 
     <h3 class="mb-10 text-slate-500">By {{ expandedArticle.authorName }}</h3>
@@ -27,12 +38,18 @@
       <p class="font-sans w-4/5 text-lg mb-10">{{ paragraph }}</p>
     </div>
 
-    <div *ngIf="expandedArticle.article.video?.videoUrl">
-      <video
-        [src]="expandedArticle.article.video.videoUrl"
+    <div
+      *ngIf="
+        expandedArticle.article.video?.videoUrl?.startsWith('https') &&
+        safeVideoUrl
+      "
+    >
+      <iframe
+        [src]="safeVideoUrl"
         controls
-        class="w-full h-full"
-      ></video>
+        class="w-[850px] h-[500px] relative min-h-12"
+        allowfullscreen
+      ></iframe>
     </div>
   </div>
 </div>
