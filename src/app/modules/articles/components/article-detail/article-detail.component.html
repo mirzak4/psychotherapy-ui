@@ -27,12 +27,12 @@
       <p class="font-sans w-4/5 text-lg mb-10">{{ paragraph }}</p>
     </div>
 
-    <!-- <div *ngIf="expandedArticle.article.video?.videoUrl">
+    <div *ngIf="expandedArticle.article.video?.videoUrl?.startsWith('https')">
       <video
         [src]="expandedArticle.article.video.videoUrl"
         controls
         class="w-full h-full"
       ></video>
     </div>
-  --></div>
+  </div>
 </div>
