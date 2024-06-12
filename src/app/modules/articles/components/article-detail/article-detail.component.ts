@@ -8,6 +8,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AuthService } from '../../../auth/services/auth.service';
 import { UserRole } from '../../../../viewmodels/enums';
 import { Router } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-article-detail',
@@ -25,12 +26,14 @@ export class ArticleDetailComponent implements OnInit {
   expandedArticle: any;
   paragraphs: string[];
   currentUserRole: UserRole;
+  safeVideoUrl: SafeResourceUrl;
 
   constructor(
     private articleService: ArticleService,
     private _dialog: MatDialog,
     private _authService: AuthService,
-    private router: Router
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +46,14 @@ export class ArticleDetailComponent implements OnInit {
       if (this.expandedArticle.article?.text.content) {
         this.paragraphs =
           this.expandedArticle.article.text.content.split('\n\n');
+      }
+      if (this.expandedArticle.article?.video?.videoUrl) {
+        this.safeVideoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+          this.expandedArticle.article.video.videoUrl.replace(
+            'watch?v=',
+            'embed/'
+          )
+        );
       }
     });
   }

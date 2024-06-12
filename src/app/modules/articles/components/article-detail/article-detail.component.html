@@ -38,12 +38,24 @@
       <p class="font-sans w-4/5 text-lg mb-10">{{ paragraph }}</p>
     </div>
 
-    <div *ngIf="expandedArticle.article.video?.videoUrl?.startsWith('https')">
-      <video
+    <div
+      *ngIf="
+        expandedArticle.article.video?.videoUrl?.startsWith('https') &&
+        safeVideoUrl
+      "
+    >
+      <!-- <video
         [src]="expandedArticle.article.video.videoUrl"
         controls
         class="w-full h-full"
       ></video>
+      -->
+      <iframe
+        [src]="safeVideoUrl"
+        controls
+        class="w-[850px] h-[500px] relative min-h-12"
+        allowfullscreen
+      ></iframe>
     </div>
   </div>
 </div>
