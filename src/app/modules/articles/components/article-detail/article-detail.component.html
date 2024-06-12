@@ -8,7 +8,7 @@
         <button
           *ngIf="currentUserRole === 'Psychologist'"
           mat-flat-button
-          class="p-3 bg-grey-darker rounded-full shadow-lg text-base font-medium text-grey-lightest"
+          class="p-3 hover:bg-black hover:shadow-lg bg-grey-darker rounded-full shadow-lg text-base font-medium text-grey-lightest"
           (click)="deleteArticleModal()"
         >
           Delete Article
@@ -16,7 +16,7 @@
         <button
           *ngIf="currentUserRole === 'Psychologist'"
           mat-flat-button
-          class="p-3 bg-grey-darker rounded-full shadow-lg text-base font-medium text-grey-lightest"
+          class="p-3 hover:bg-black hover:shadow-lg bg-grey-darker rounded-full shadow-lg text-base font-medium text-grey-lightest"
           (click)="openEditArticleModal()"
         >
           Edit Article
