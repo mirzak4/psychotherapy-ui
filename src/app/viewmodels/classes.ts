@@ -1,5 +1,5 @@
 import { UserRole } from './enums';
-import { IArticle, IBreathControl, ICreateBreathContolLogRequest, ICreateMeditationLogRequest, ICreateWalkLogRequest, IImage, IMeditation, IQuestion, IRegisterPatientRequest, IRole, IText, ITokenUser, IUpdateActionDurationTimeRequest, IVideo, IWalk } from './viewmodels';
+import { IArticle, IBreathControl, ICreateBreathContolLogRequest, ICreateMeditationLogRequest, ICreateWalkLogRequest, IImage, IMeditation, IQuestion, IRegisterPatientRequest, IRole, ISession, IStresReliefAction, IText, ITokenUser, IUpdateActionDurationTimeRequest, IVideo, IWalk } from './viewmodels';
 
 export class Text implements IText {
   content: string;
@@ -215,6 +215,27 @@ export class UpdateActionDurationTimeRequest implements IUpdateActionDurationTim
   durationTime: number;
 
   constructor(data?: IUpdateActionDurationTimeRequest) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+}
+
+export class GetStressReliefActionLogsResponse {
+  stressReliefActionLogs: IStresReliefAction[];
+}
+
+export class Session implements ISession {
+  sessionId: string;
+  psychologistId: string;
+  patientId: string;
+  day: string;
+  time: string;
+
+  constructor(data?: ISession) {
     if (data) {
       for (var property in data) {
         if (data.hasOwnProperty(property))

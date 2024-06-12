@@ -1,0 +1,8 @@
+<div class="flex w-[550px]" >
+    <h1>Choose one of the available session slots</h1>
+    <div class="h-[200px] overflow-auto">
+        @for (session of sessions; track $index) {
+            <span>{{ session }}</span>
+        }
+    </div>
+</div>
