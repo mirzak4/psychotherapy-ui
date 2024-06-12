@@ -54,4 +54,9 @@ export class ArticleService {
       )
       .pipe(switchMap(() => this.getAllArticles()));
   }
+
+  updateArticle(articleID: string, updatedArticle: any) {
+    const url = `${environment.apiUrl}articleservice/articles/update/${articleID}`;
+    return this._http.put(url, updatedArticle);
+  }
 }

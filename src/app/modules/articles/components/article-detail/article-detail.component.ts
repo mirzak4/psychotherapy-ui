@@ -55,4 +55,16 @@ export class ArticleDetailComponent implements OnInit {
       });
     console.log(this.expandedArticle?.article.id);
   }
+
+  openEditArticleModal() {
+    this._dialog.open(EditArticleModalComponent, {
+      panelClass: 'edit-article-modal-container',
+      data: {
+        title: this.expandedArticle?.article.title,
+        content: this.expandedArticle?.article.text.content,
+        imageUrl: this.expandedArticle?.article.image?.imageUrl,
+        videoUrl: this.expandedArticle?.article.video?.videoUrl,
+      },
+    });
+  }
 }
