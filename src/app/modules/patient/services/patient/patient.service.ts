@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../../../environment';
-import { ISession, IUser } from '../../../../viewmodels/viewmodels';
+import { IAddPatientToSessionRequest, ISession, IUser } from '../../../../viewmodels/viewmodels';
 import { map } from 'rxjs';
 import { AuthService } from '../../../auth/services/auth.service';
 import { UserRole } from '../../../../viewmodels/enums';
@@ -29,5 +29,38 @@ export class PatientService {
   getSessionsForPsychologist(psychologistId: string) {
     return this._http.get<ISession[]>(environment.apiUrl + 
       'appointmentservice/api/sessions/getAllAvailableSessions/' + psychologistId);
+  }
+
+  addPatientToSession(request: IAddPatientToSessionRequest) {
+    return this._http.post(environment.apiUrl + 
+      'appointmentservice/api/sessions/addPatient',
+      request
+    );
+  }
+
+  checkIfPatientHasChosenPsychologist(patientId: string) {
+    return this._http.get<boolean>(environment.apiUrl +
+      'appointmentservice/patients/checkIfPatientHasChosenPsychologist/' + patientId
+    );
+  }
+
+  tryCreateGoogleCalendarEvent(userEmail: string, day: string, time: string) {
+    const params = new HttpParams()
+      .set('psychologistEmail', userEmail)
+      .set('day', day)
+      .set('time', time);
+    return this._http.get<any>(environment.apiUrl +
+      'appointmentservice/route/',
+      { params: params });
+  }
+
+  authenticateGoogleApi(token: string) {
+    const params = new HttpParams()
+    .set('code', token)
+    .set('scope', '');
+    return this._http.get(environment.apiUrl +
+      'appointmentservice/route/token',
+      { params: params }
+    );
   }
 }

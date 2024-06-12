@@ -22,7 +22,7 @@
     </mat-form-field>
     <mat-form-field class="w-1/2">
       <mat-label>Paste your video URL here</mat-label>
-      <input type="text" matInput />
+      <input type="text" matInput formControlName="videoUrl" />
     </mat-form-field>
   </div>
 </form>
@@ -37,7 +37,7 @@
   </button>
   <button
     mat-flat-button
-    class="p-5 bg-grey-darker rounded-full p-3 shadow-lg text-base font-medium text-grey-lightest"
+    class="p-5 hover:bg-black hover:shadow-lg bg-grey-darker rounded-full p-3 shadow-lg text-base font-medium text-grey-lightest"
     (click)="createArticle()"
   >
     Save

@@ -4,6 +4,9 @@ import { IQuestion } from '../../../../../viewmodels/viewmodels';
 import { CommonModule } from '@angular/common';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
+import { Report } from '../../../../../viewmodels/classes';
+import { AuthService } from '../../../../auth/services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-daily-report',
@@ -27,7 +30,12 @@ export class DailyReportComponent implements OnInit {
     'https://study.com/cimages/multimages/16/450_worshipping-god-21013477852499734828091853.jpg'
   ]
 
-  constructor(private reportService: ReportService) {
+  constructor(
+    private reportService: ReportService,
+    private _authService: AuthService,
+    private _router: Router,
+    private _route: ActivatedRoute
+  ) {
   }
 
   ngOnInit(): void {
@@ -38,18 +46,18 @@ export class DailyReportComponent implements OnInit {
 
   formatEmotionSlider(value: number): string {
     if (value >= 90) {
-      return 'really happy';
+      return value + '(really happy)';
     }
     if (value >= 65 && value < 90) {
-      return 'happy';
+      return value + '(happy)';
     }
     if (value >= 50 && value < 65) {
-      return 'neutral'
+      return value + '(neutral)'
     }
     if (value >= 35 && value < 50) {
-      return 'sad';
+      return value + '(sad)';
     }
-    return 'really sad';
+    return value + '(really sad)';
   }
 
   get sliderEmoji() {
@@ -70,5 +78,28 @@ export class DailyReportComponent implements OnInit {
       return 'assets/emojis/really_sad.png';
     }
     return '';
+  }
+
+  submitDailyReport() {
+    const reportContent = this.buildReportContent();
+    const report = new Report({
+      patientId: this._authService.currentUserId,
+      weeklyReportId: null,
+      content: reportContent,
+      createdAt: ''
+    });
+    this.reportService.createDailyReport(report).subscribe(
+      () => this._router.navigate(['../'], { relativeTo: this._route })
+    );
+  }
+
+  private buildReportContent(): string {
+    const sliderValue = parseInt(this.sliderInput.nativeElement.value)
+    let content = '';
+    this.questions.forEach(q => {
+      content+= `${q.question}\nAnswer: ${q.selectedAnswer}\n\n`
+    });
+    content+= `\nOverall emotion score: ${this.formatEmotionSlider(sliderValue)}`;
+    return content;
   }
 }

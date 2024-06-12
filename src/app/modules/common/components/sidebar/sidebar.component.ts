@@ -22,6 +22,7 @@ import { AuthService } from '../../../auth/services/auth.service';
 export class SidebarComponent implements OnInit, OnDestroy {
   navigationItems: NavigationItem[] = [];
   private _unsubscribeAll: Subject<void> = new Subject();
+  showSubOptions: boolean = false;
 
   constructor(
     private _navigationService: NavigationService, 

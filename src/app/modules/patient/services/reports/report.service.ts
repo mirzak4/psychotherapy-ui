@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { IQuestion } from '../../../../viewmodels/viewmodels';
+import { IQuestion, IReport } from '../../../../viewmodels/viewmodels';
 import { Observable, map } from 'rxjs';
+import { environment } from '../../../../environment';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,14 @@ export class ReportService {
         return commonQuestions;
       })
     );
+  }
+
+  createDailyReport(report: IReport) {
+    return this._http.post(environment.apiUrl + 'appointmentservice/api/daily-reports', report);
+  }
+
+  getDailyReportsForPatient(patientId: string) {
+    const params = new HttpParams().set('patientId', patientId);
+    return this._http.get<IReport[]>(environment.apiUrl + 'appointmentservice/api/daily-reports', { params: params });
   }
 }

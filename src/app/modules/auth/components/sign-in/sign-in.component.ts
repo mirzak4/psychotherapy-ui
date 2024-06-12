@@ -6,7 +6,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { tap } from 'rxjs';
+import { of, switchMap, tap } from 'rxjs';
+import { UserRole } from '../../../../viewmodels/enums';
+import { PatientService } from '../../../patient/services/patient/patient.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -29,7 +31,8 @@ export class SignInComponent {
   constructor(
     private _formBuilder: UntypedFormBuilder, 
     private _authService: AuthService,
-    private _router: Router
+    private _router: Router,
+    private _patientService: PatientService
   ) {
     this.signInForm = this._formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -39,9 +42,36 @@ export class SignInComponent {
 
   signIn() {
     if (this.signInForm.valid) {
-      this._authService.signIn(this.signInForm.get('email')?.value, this.signInForm.get('password')?.value)
+      this._authService.signIn(this.signInForm.get('email')?.value, this.signInForm.get('password')?.value).pipe(
+        switchMap(() => {
+          const role = this._authService.currentUserRole;
+          switch (role) {
+            case UserRole.Psychologist: 
+              return of(true)
+            case UserRole.Patient:
+              return this._patientService.checkIfPatientHasChosenPsychologist(this._authService.currentUserId);
+            default:
+              return of(true);
+        }}),
+        tap((homeNavigation) => {
+          if (homeNavigation) {
+            this._router.navigate(['/articles']);
+          }
+          else {
+            this._router.navigate(['/patient/psychologist-select']);
+          }
+        })
+      )
         .subscribe(() => {
-          this._router.navigate(['patient/psychologist-select']);
+          // const role = this._authService.currentUserRole;
+          // switch (role) {
+          //   case UserRole.Psychologist: 
+          //     this._router.navigate(['articles']);
+          //     return;
+          //   case UserRole.Patient:
+
+          // }
+          // this._router.navigate(['patient/psychologist-select']);
         });
     }
   }
