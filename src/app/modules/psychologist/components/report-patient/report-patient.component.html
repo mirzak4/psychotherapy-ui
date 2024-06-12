@@ -1,0 +1,45 @@
+<h1 class="text-2xl text-slate-600 font-bold mb-10">Edit current article</h1>
+<form [formGroup]="articleForm">
+  <mat-form-field class="w-full">
+    <mat-label>Enter article title</mat-label>
+    <input type="text" matInput formControlName="title" />
+  </mat-form-field>
+  <mat-form-field class="w-full">
+    <mat-label>Write your content below:</mat-label>
+    <textarea
+      matInput
+      name=""
+      id=""
+      cols="30"
+      rows="10"
+      formControlName="content"
+    ></textarea>
+  </mat-form-field>
+  <div class="flex flex-row w-full gap-x-2">
+    <mat-form-field class="w-1/2">
+      <mat-label>Paste your image URL here</mat-label>
+      <input type="text" matInput formControlName="imageUrl" />
+    </mat-form-field>
+    <mat-form-field class="w-1/2">
+      <mat-label>Paste your video URL here</mat-label>
+      <input type="text" matInput />
+    </mat-form-field>
+  </div>
+</form>
+<div class="flex flex-row justify-center gap-x-2">
+  <button
+    mat-flat-button
+    class="border border-solid border-violet-800 bg-white text-violet-800"
+    class="p-5 bg-custom-grey rounded-full p-3 shadow-lg text-base font-medium text-grey-darker"
+    (click)="closeModal()"
+  >
+    Exit
+  </button>
+  <button
+    mat-flat-button
+    class="p-5 bg-grey-darker rounded-full p-3 shadow-lg text-base font-medium text-grey-lightest"
+  >
+    Save
+  </button>
+</div>
+

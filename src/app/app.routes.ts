@@ -29,6 +29,10 @@ export const routes: Routes = [
       {
         path: 'patient',
         loadChildren: () => import('./modules/patient/patient.routes')
+      },
+      {
+        path: 'psychologist',
+        loadChildren: () => import('./modules/psychologist/psychologist.routes')
       }
     ]
   }
