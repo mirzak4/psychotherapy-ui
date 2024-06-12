@@ -46,4 +46,12 @@ export class ArticleService {
       .post(environment.apiUrl + 'articleservice/articles/add', article)
       .pipe(switchMap(() => this.getAllArticles()));
   }
+
+  deleteArticle(articleID: string) {
+    return this._http
+      .delete(
+        `${environment.apiUrl}articleservice/articles/remove/${articleID}`
+      )
+      .pipe(switchMap(() => this.getAllArticles()));
+  }
 }

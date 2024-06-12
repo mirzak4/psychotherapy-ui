@@ -4,14 +4,15 @@
       <h1 class="w-9/12 font-bold text-black text-4xl mb-2 ml-50 text-justify">
         {{ expandedArticle.article.title }}
       </h1>
-      <!--<button
+      <button
+        *ngIf="currentUserRole === 'Psychologist'"
         mat-flat-button
-        class="pl-5 pr-5 bg-grey-darker rounded-full p-3 shadow-lg text-base font-medium text-grey-lightest"
-        (click)="openEditArticleModal()"
+        class="p-3 bg-grey-darker rounded-full shadow-lg text-base font-medium text-grey-lightest"
+        (click)="deleteArticleModal()"
       >
-        Edit Article
+        Delete Article
       </button>
-    --></div>
+    </div>
 
     <h3 class="mb-10 text-slate-500">By {{ expandedArticle.authorName }}</h3>
 
