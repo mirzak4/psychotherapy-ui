@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Article, Image, Text } from '../../../../viewmodels/classes';
+import { Article, Image, Text, Video } from '../../../../viewmodels/classes';
 import { ArticleService } from '../../services/article.service';
 import { AuthService } from '../../../auth/services/auth.service';
 
@@ -51,19 +51,23 @@ export class ArticleModalComponent {
 
   createArticle() {
     let article = new Article({
-      id: '',
+      id: 'nesto',
       title: this.articleForm.get('title')?.value,
       author: this._authService.currentUserId,
       text: new Text({
         content: this.articleForm.get('content')?.value,
       }),
+      video: new Video({
+        videoUrl: this.articleForm.get('videoUrl')?.value,
+      }),
       image: new Image({
         imageUrl: this.articleForm.get('imageUrl')?.value,
       }),
     });
-    /*this._articleService.createArticle(article).subscribe(() => {
+    this._articleService.createArticle(article).subscribe(() => {
       this.closeModal();
-    });*/
+    });
+    console.log('clanak bi trebao biti dodan');
     console.log(article);
   }
 }

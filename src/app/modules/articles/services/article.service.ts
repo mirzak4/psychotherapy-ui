@@ -40,4 +40,10 @@ export class ArticleService {
         })
       );
   }
+
+  createArticle(article: IArticle) {
+    return this._http
+      .post(environment.apiUrl + 'articleservice/articles/add', article)
+      .pipe(switchMap(() => this.getAllArticles()));
+  }
 }
