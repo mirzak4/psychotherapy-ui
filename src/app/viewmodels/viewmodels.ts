@@ -123,3 +123,17 @@ export interface IExpandedArticle {
   article: IArticle;
   authorName: string;
 }
+
+export interface IAddPatientToSessionRequest {
+  psychologistId: string;
+  day: string;
+  time: string;
+  patientId: string;
+}
+
+export interface IReport {
+  content: string;
+  patientId: string;
+  weeklyReportId: string;
+  createdAt: string;
+}

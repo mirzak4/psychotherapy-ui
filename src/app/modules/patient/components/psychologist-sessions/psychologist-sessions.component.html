@@ -1,8 +1,45 @@
-<div class="flex w-[550px]" >
-    <h1>Choose one of the available session slots</h1>
-    <div class="h-[200px] overflow-auto">
-        @for (session of sessions; track $index) {
-            <span>{{ session }}</span>
-        }
-    </div>
+<div class="flex flex-col w-[550px] p-6">
+    <h1 class="font-bold text-2xl mb-8">Choose one of the available session slots</h1>
+    <table mat-table [dataSource]="dataSource" class="w-full min-w-full">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Type Column -->
+        <ng-container matColumnDef="dayOfWeek">
+          <th mat-header-cell *matHeaderCellDef> Day of Week </th>
+          <td mat-cell *matCellDef="let element"> {{ element.day }} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="time">
+          <th mat-header-cell *matHeaderCellDef> Time </th>
+          <td mat-cell *matCellDef="let element"> {{ element.time }} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element"
+                [ngClass]="{
+                    'text-red-600': element.patientId,
+                    'text-green-600': !element.patientId
+                }">{{ getSessionStatus(element) }}</td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" class="bg-slate-600 text-white"></tr>
+        <tr 
+            mat-row *matRowDef="let row; columns: displayedColumns;"
+            [ngClass]="{
+                'cursor-pointer': !row.patientId,
+                'hover:bg-slate-100': !row.patientId
+            }"
+            (click)="addPatientToSession(row)">
+        </tr>
+    </table>
+    <mat-paginator [length]="dataSource.data.length"
+        [pageSize]="5"
+        aria-label="Select page"
+        class="flex justify-center w-full">
+    </mat-paginator>
 </div>

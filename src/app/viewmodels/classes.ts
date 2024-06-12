@@ -1,5 +1,6 @@
 import { UserRole } from './enums';
 import {
+  IAddPatientToSessionRequest,
   IArticle,
   IBreathControl,
   ICreateBreathContolLogRequest,
@@ -11,6 +12,7 @@ import {
   IPsychologist,
   IQuestion,
   IRegisterPatientRequest,
+  IReport,
   IRole,
   ISession,
   IStresReliefAction,
@@ -297,4 +299,37 @@ export class Session implements ISession {
       }
     }
   }
+}
+
+export class AddPatientToSessionRequest implements IAddPatientToSessionRequest {
+  psychologistId: string;
+  day: string;
+  time: string;
+  patientId: string;
+
+  constructor(data?: IAddPatientToSessionRequest) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+}
+
+export class Report implements IReport {
+  content: string;
+  patientId: string;
+  weeklyReportId: string;
+  createdAt: string;
+
+  constructor(data?: IReport) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+  
 }

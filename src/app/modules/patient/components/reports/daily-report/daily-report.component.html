@@ -15,8 +15,9 @@
                             @for (answer of question.answers; track $index) {
                                 <li class="mt-1.5" (click)="question.selectedAnswer = answer">
                                     <div 
-                                        class="px-3 cursor-pointer border border-solid border-indigo-800 bg-indigo-200"
+                                        class="px-3 cursor-pointer border border-solid border-indigo-800"
                                         [ngClass]="{
+                                            'bg-indigo-200': question.selectedAnswer !== answer,
                                             'hover:bg-indigo-100': question.selectedAnswer !== answer,
                                             'bg-emerald-300': question.selectedAnswer === answer
                                         }">
@@ -43,6 +44,7 @@
         <button
             mat-flat-button
             class="bg-grey-darker text-white"
+            (click)="submitDailyReport()"
         >
             Save Daily Report
         </button>

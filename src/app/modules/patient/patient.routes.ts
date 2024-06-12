@@ -3,6 +3,7 @@ import { PsychologistSelectComponent } from "./components/psychologist-select/ps
 import { DailyReportComponent } from "./components/reports/daily-report/daily-report.component";
 import { StressReliefComponent } from "./components/stress-relief/stress-relief.component";
 import { StressReliefActionLogsComponent } from "./components/reports/stress-relief-action-logs/stress-relief-action-logs.component";
+import { ReportsComponent } from "./components/reports/reports.component";
 
 export default [
     {
@@ -10,12 +11,21 @@ export default [
         component: PsychologistSelectComponent
     },
     {
-        path: 'report',
-        component: DailyReportComponent
-    },
-    {
         path: 'reports',
-        component: StressReliefActionLogsComponent
+        children: [
+            {
+                path: '',
+                component: ReportsComponent
+            },
+            {
+                path: 'daily',
+                component: DailyReportComponent
+            },
+            {
+                path: 'stress-relief',
+                component: StressReliefActionLogsComponent
+            }
+        ]
     },
     {
         path: 'stress-relief',

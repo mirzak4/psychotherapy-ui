@@ -8,6 +8,7 @@ import { PatientService } from '../../services/patient/patient.service';
 import { IUser } from '../../../../viewmodels/viewmodels';
 import { MatDialog } from '@angular/material/dialog';
 import { PsychologistSessionsComponent } from '../psychologist-sessions/psychologist-sessions.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-psychologist-select',
@@ -30,11 +31,17 @@ export class PsychologistSelectComponent implements OnInit {
   items = [1, 2, 3, 4, 5, 6, 7, 8];
   constructor(
     private _patientService: PatientService,
-    private _matDialog: MatDialog
+    private _matDialog: MatDialog,
+    private _router: Router,
+    private _route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this._patientService.getAllPsychologists().subscribe((result: IUser[]) => this.psychologists = result);
+    const googleApiToken = this._route.snapshot.queryParamMap.get('code');
+    if (googleApiToken) {
+      this._patientService.authenticateGoogleApi(googleApiToken).subscribe();
+    }
   }
 
   scrollToNext() {
@@ -54,11 +61,14 @@ export class PsychologistSelectComponent implements OnInit {
   }
 
   openPsychologistSessions(psychologistId: string) {
-    this._matDialog.open(PsychologistSessionsComponent, {
+    const dialogRef = this._matDialog.open(PsychologistSessionsComponent, {
       data: {
         psychologistId: psychologistId
       },
+      disableClose: true,
       panelClass: 'psychologist-sessions-container'
-    })
+    });
+
+    dialogRef.afterClosed().subscribe(() => this._router.navigate(['/articles']));
   }
 }

@@ -53,6 +53,11 @@ export class AuthService {
     return decodedToken.name;
   }
 
+  get currentUserEmail(): string {
+    const decodedToken = this.decodeToken(this.accessToken);
+    return decodedToken.email;
+  }
+
   get currentUserId(): string {
     const decodedToken = this.decodeToken(this.accessToken);
     return decodedToken.sub;
