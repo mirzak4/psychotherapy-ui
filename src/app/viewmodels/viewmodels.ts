@@ -88,6 +88,23 @@ export interface IUpdateActionDurationTimeRequest {
   durationTime: number;
 }
 
+export interface IUser {
+  type: string;
+  name: string;
+  email: string;
+  userId: string;
+  roleId: string;
+  imageUrl: string;
+}
+
+export interface ISession {
+  sessionId: string;
+  psychologistId: string;
+  patientId: string;
+  day: string;
+  time: string;
+}
+
 export interface IPsychologist {
   type: string;
   name: string;

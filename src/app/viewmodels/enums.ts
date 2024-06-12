@@ -9,3 +9,9 @@ export enum Gender {
     Male,
     Female,
 }
+
+export enum StressReliefActionType {
+    Meditation = 'Meditation',
+    BreathControl = 'Breath Control',
+    Walk = 'Walk'
+}
