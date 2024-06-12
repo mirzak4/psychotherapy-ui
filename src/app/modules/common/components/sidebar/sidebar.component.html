@@ -1,7 +1,4 @@
-<mat-sidenav-container
-  class="w-[270px]"
-  *ngIf="navigationItems && navigationItems.length"
->
+<mat-sidenav-container class="w-[270px]">
   <mat-sidenav
     #sidenav
     mode="side"
@@ -12,11 +9,7 @@
     [fixedBottomGap]="0"
   >
     <div class="flex flex-col w-full items-center my-4">
-      <img
-        src="assets/psychotherapy_logo.png"
-        alt=""
-        class="rounded-full w-28 h-28"
-      />
+      <img src="assets/psychotherapy.png" alt="" class="w-28 h-28" />
     </div>
     <ul class="font-bold text-xl gap-y-4">
       @for (item of navigationItems; track $index) {

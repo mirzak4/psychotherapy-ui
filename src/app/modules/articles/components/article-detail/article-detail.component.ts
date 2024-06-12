@@ -19,7 +19,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
   styleUrl: './article-detail.component.scss',
 })
 export class ArticleDetailComponent implements OnInit {
-  article: any;
+  expandedArticle: any;
   paragraphs: string[];
 
   constructor(
@@ -28,23 +28,24 @@ export class ArticleDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.articleService.currentArticle$.subscribe((article) => {
-      this.article = article;
-      if (this.article?.text.content) {
-        this.paragraphs = this.article.text.content.split('\n\n');
+    this.articleService.currentArticle$.subscribe((expandedArticle) => {
+      this.expandedArticle = expandedArticle;
+      if (this.expandedArticle.article?.text.content) {
+        this.paragraphs =
+          this.expandedArticle.article.text.content.split('\n\n');
       }
     });
   }
 
   openEditArticleModal() {
-    this._dialog.open(EditArticleModalComponent, {
+    /*this._dialog.open(EditArticleModalComponent, {
       panelClass: 'edit-article-modal-container',
       data: {
-        title: this.article.title,
-        content: this.article.text.content,
-        imageUrl: this.article.imageUrl,
-        videoUrl: this.article.videoUrl,
+        title: this.expandedArticle.article.title,
+        content: this.expandedArticle.article.text.content,
+        imageUrl: this.expandedArticle.article.imageUrl,
+        videoUrl: this.expandedArticle.article.videoUrl,
       },
-    });
+    });*/
   }
 }

@@ -1,5 +1,25 @@
 import { UserRole } from './enums';
-import { IArticle, IBreathControl, ICreateBreathContolLogRequest, ICreateMeditationLogRequest, ICreateWalkLogRequest, IImage, IMeditation, IQuestion, IRegisterPatientRequest, IRole, ISession, IStresReliefAction, IText, ITokenUser, IUpdateActionDurationTimeRequest, IVideo, IWalk } from './viewmodels';
+import {
+  IArticle,
+  IBreathControl,
+  ICreateBreathContolLogRequest,
+  ICreateMeditationLogRequest,
+  ICreateWalkLogRequest,
+  IExpandedArticle,
+  IImage,
+  IMeditation,
+  IPsychologist,
+  IQuestion,
+  IRegisterPatientRequest,
+  IRole,
+  ISession,
+  IStresReliefAction,
+  IText,
+  ITokenUser,
+  IUpdateActionDurationTimeRequest,
+  IVideo,
+  IWalk,
+} from './viewmodels';
 
 export class Text implements IText {
   content: string;
@@ -56,6 +76,36 @@ export class Article implements IArticle {
       }
     }
   }
+}
+
+export class ExpendedArticle implements IExpandedArticle {
+  constructor(data?: IExpandedArticle) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+  article: IArticle;
+  authorName: string;
+}
+
+export class Psychologist implements IPsychologist {
+  constructor(data?: IPsychologist) {
+    if (data) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property))
+          (<any>this)[property] = (<any>data)[property];
+      }
+    }
+  }
+  type: string;
+  name: string;
+  email: string;
+  password: string;
+  userId: string;
+  roleId: string;
 }
 
 export class LoginResponse {
@@ -182,7 +232,9 @@ export class CreateMeditationLogRequest implements ICreateMeditationLogRequest {
   }
 }
 
-export class CreateBreathControlLogRequest implements ICreateBreathContolLogRequest {
+export class CreateBreathControlLogRequest
+  implements ICreateBreathContolLogRequest
+{
   patientId: string;
   tempo: number;
 
@@ -210,7 +262,9 @@ export class CreateWalkLogRequest implements ICreateWalkLogRequest {
   }
 }
 
-export class UpdateActionDurationTimeRequest implements IUpdateActionDurationTimeRequest {
+export class UpdateActionDurationTimeRequest
+  implements IUpdateActionDurationTimeRequest
+{
   stressReliefActionId: string;
   durationTime: number;
 

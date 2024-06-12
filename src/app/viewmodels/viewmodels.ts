@@ -1,4 +1,4 @@
-import { UserRole } from "./enums";
+import { UserRole } from './enums';
 
 export interface IText {
   content: string;
@@ -103,4 +103,23 @@ export interface ISession {
   patientId: string;
   day: string;
   time: string;
+}
+
+export interface IPsychologist {
+  type: string;
+  name: string;
+  email: string;
+  password: string;
+  userId: string;
+  roleId: string;
+}
+
+export interface IPsychologistArticleMap {
+  psychologistDetails?: IPsychologist;
+  articles?: IArticle[];
+}
+
+export interface IExpandedArticle {
+  article: IArticle;
+  authorName: string;
 }
