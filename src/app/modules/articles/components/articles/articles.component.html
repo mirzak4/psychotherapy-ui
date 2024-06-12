@@ -5,6 +5,7 @@
         Articles & Resources
       </h1>
       <button
+        *ngIf="currentUserRole === 'Psychologist'"
         mat-flat-button
         class="p-5 bg-grey-darker rounded-full p-3 shadow-lg text-base font-medium text-grey-lightest"
         (click)="openNewArticleModal()"
