@@ -6,7 +6,7 @@ import { UserRole } from '../../../../viewmodels/enums';
 export interface NavigationItem {
   label: string;
   icon?: string;
-  link: string;
+  link?: string;
   roles: UserRole[];
   subOptions?: NavigationItem[];
 }
@@ -23,8 +23,20 @@ export class NavigationService {
     },
     {
       label: 'Your Reports',
-      link: 'patient/reports',
-      roles: [UserRole.Patient]
+      // link: 'patient/reports',
+      roles: [UserRole.Patient],
+      subOptions: [
+        {
+          label: 'Daily Reports Overview',
+          link: 'patient/reports',
+          roles: [UserRole.Patient]
+        },
+        {
+          label: 'Stress Relief Logs',
+          link: 'patient/reports/stress-relief',
+          roles: [UserRole.Patient]
+        }
+      ]
     },
     {
       label: 'Stress Relief',
