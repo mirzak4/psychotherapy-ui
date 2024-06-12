@@ -46,5 +46,5 @@ export class EditArticleModalComponent {
     this._matDialogRef.close();
   }
 
-  createArticle() {}
+  saveUser(): void {}
 }

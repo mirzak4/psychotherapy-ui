@@ -1,16 +1,18 @@
 <mat-card class="w-[320px] h-[310px] rounded-lg shadow-lg">
   <mat-card-header class="m-0 -ml-10 pl-0">
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title class="text-lg">{{ article.title }}</mat-card-title>
+    <mat-card-title class="text-lg">{{
+      expandedArticle.article.title
+    }}</mat-card-title>
     <mat-card-subtitle class="text-xs"
-      >By {{ article.author }}</mat-card-subtitle
+      >By {{ expandedArticle.authorName }}</mat-card-subtitle
     >
     <!-- <span *ngIf="role != 'Manager'">This is manager</span> -->
   </mat-card-header>
   <img
     class="h-[200px]"
     mat-card-image
-    [src]="article.image?.imageUrl"
+    [src]="expandedArticle.article.image?.imageUrl"
     alt="Photo of a Shiba Inu"
   />
 

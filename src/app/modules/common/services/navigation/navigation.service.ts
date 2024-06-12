@@ -8,6 +8,7 @@ export interface NavigationItem {
   icon?: string;
   link: string;
   roles: UserRole[];
+  subOptions?: NavigationItem[];
 }
 
 @Injectable({
@@ -22,7 +23,7 @@ export class NavigationService {
     },
     {
       label: 'Your Reports',
-      link: 'reports',
+      link: 'patient/reports',
       roles: [UserRole.Patient]
     },
     {

@@ -1,0 +1,47 @@
+<div class="bg-slate-200 w-full h-full pt-9 pl-12 pb-8 overflow-auto">
+    <div class="w-[850px]">
+        <table mat-table [dataSource]="dataSource" class="w-full min-w-full">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Type Column -->
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef> Type </th>
+              <td mat-cell *matCellDef="let element"> {{ getActionType(element) }} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="startedAt">
+              <th mat-header-cell *matHeaderCellDef> Started at </th>
+              <td mat-cell *matCellDef="let element"> {{ element.startedAt | date: 'medium' }} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="duration">
+              <th mat-header-cell *matHeaderCellDef> Duration </th>
+              <td mat-cell *matCellDef="let element"> {{ element.durationTime | duration }} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="additional">
+                <th mat-header-cell *matHeaderCellDef> Additional Info </th>
+                <td mat-cell *matCellDef="let element" class="italic"> {{ getAdditionalInfo(element) }} </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns" class="bg-slate-600 text-white"></tr>
+            <tr 
+                mat-row *matRowDef="let row; columns: displayedColumns;"
+                [ngClass]="{
+                    'bg-indigo-100': getActionType(row) === 'Meditation',
+                    'bg-green-200': getActionType(row) === 'Breath Control',
+                    'bg-orange-200': getActionType(row) === 'Walk',
+                }"></tr>
+        </table>
+        <mat-paginator [length]="dataSource.data.length"
+        [pageSize]="5"
+        aria-label="Select page"
+        class="flex justify-center w-full">
+        </mat-paginator>
+    </div>
+</div>
