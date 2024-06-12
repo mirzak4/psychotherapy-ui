@@ -87,7 +87,25 @@ export interface IUpdateActionDurationTimeRequest {
   stressReliefActionId: string;
   durationTime: number;
 }
-
+export interface IWeeklyReport {
+  weeklyReportId : string;
+  content : string;
+  psychologistId : string;
+  patientId : string;
+  createdAt :string;
+}
+export interface IDailyReport {
+  dailyReportId: string;
+  content: string;
+  patientId: string;
+  weeklyReportId: string;
+  createdAt:string;
+}
+export interface ICreateSessionRequest{
+  psychologistId: string;
+  day: string;
+  time: string;
+}
 export interface IUser {
   type: string;
   name: string;
@@ -96,7 +114,24 @@ export interface IUser {
   roleId: string;
   imageUrl: string;
 }
+export interface IPatient {
+   userId : string;
+   age : number;
+  selectedPsychologistId: string;
 
+}
+export interface IPatient {
+  userId: string;
+  age: number;
+  selectedPsychologistId: string;
+}
+export interface ISession {
+    sessionId: string;
+    psychologistId: string;
+    patientId: string;
+    day: string;
+    time: string;
+}
 export interface ISession {
   sessionId: string;
   psychologistId: string;

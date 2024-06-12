@@ -1,14 +1,90 @@
 ::ng-deep {
-    .edit-article-modal-container {
+    .article-modal-container {
       width: 750px;
       height: 500px;
       .mat-mdc-dialog-container {
         .mdc-dialog__container {
           .mat-mdc-dialog-surface {
-            padding: 24px 24px 24px 24px;
+            padding: 24px;
           }
         }
       }
     }
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+  
+  .report-item {
+    margin-bottom: 20px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .gap-x-2 {
+    gap: 8px;
+  }
+  
+  .mt-4 {
+    margin-top: 16px;
+  }
+  
+  .mt-10 {
+    margin-top: 40px;
+  }
+  
+  .mb-10 {
+    margin-bottom: 40px;
+  }
+  
+  .p-3 {
+    padding: 12px;
+  }
+  
+  .bg-custom-grey {
+    background-color: #f5f5f5;
+  }
+  
+  
+  
+  .text-slate-600 {
+    color: #718096;
+  }
+  
+  .bg-grey-darker {
+    background-color: #2d3748;
+  }
+  
+  .text-grey-lightest {
+    color: #f7fafc;
+  }
+  
+  .shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .text-base {
+    font-size: 1rem;
+  }
+  
+  .font-medium {
+    font-weight: 500;
+  }
+  
+  .font-bold {
+    font-weight: 700;
   }
   

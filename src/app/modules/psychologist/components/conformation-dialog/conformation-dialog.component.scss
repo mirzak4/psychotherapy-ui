@@ -1,0 +1,60 @@
+::ng-deep {
+    .mat-mdc-dialog-container {
+      .mdc-dialog__container {
+        .mat-mdc-dialog-surface {
+          padding: 24px;
+        }
+      }
+    }
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .modal-body {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .bg-grey-darker {
+    background-color: #2d3748;
+  }
+  
+  .text-grey-lightest {
+    color: #f7fafc;
+  }
+  
+  .border-violet-800 {
+    border-color: #5a4fcf;
+  }
+  
+  .text-violet-800 {
+    color: #5a4fcf;
+  }
+  
+  .shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .text-base {
+    font-size: 1rem;
+  }
+  
+  .font-medium {
+    font-weight: 500;
+  }
+  
+  .font-bold {
+    font-weight: 700;
+  }
+  

@@ -1,44 +1,80 @@
 <div class="bg-slate-200 bg-opacity-50 w-full h-full">
-    <div class="container mx-auto max-w-8xl px-4 py-6">
-      <div class="patient-list-container px-4 py-6">
-        <h1 class="text-3xl font-bold">My Patients</h1>
-        <table mat-table [dataSource]="patients" class="mat-elevation-z8">
+  <div class="container mx-auto max-w-8xl px-4 py-6">
+    <div class="patient-list-container px-4 py-6">
+      <h1 class="text-3xl font-bold">My Patients</h1>
+      <table mat-table [dataSource]="patients" class="mat-elevation-z8">
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let patient"> {{patient.name}} </td>
+        </ng-container>
+        <!-- Age Column -->
+        <ng-container matColumnDef="age">
+          <th mat-header-cell *matHeaderCellDef> Age </th>
+          <td mat-cell *matCellDef="let patient"> {{patient.age}} </td>
+        </ng-container>
+        <!-- Time of Appointment Column -->
+        <ng-container matColumnDef="time">
+          <th mat-header-cell *matHeaderCellDef> Time of the appointment </th>
+          <td mat-cell *matCellDef="let patient"> {{patient.day}} {{patient.time}} </td>
+        </ng-container>
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef class="text-center"> Action </th>
+          <td mat-cell *matCellDef="let patient" class="flex justify-center">
+            <button mat-icon-button (click)="onReportClick(patient)" aria-label="Weekly Report">
+              <mat-icon>description</mat-icon>
+            </button>
+            <button mat-icon-button (click)="onDeleteClick(patient.psychologistId,patient.day, patient.time)" aria-label="Delete">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    <div class="free-appointments-container px-4 py-6 mt-8">
+      <div class="free-appointments-container px-4 py-6 mt-8">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-3xl font-bold">Free Appointments</h2>
+          <!-- Add New Appointment Button -->
+          <button mat-icon-button color="primary" class="bg-gray-300 text-gray-800" (click)="openCreateAppointmentDialog()" aria-label="Add New Appointment">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      <table mat-table [dataSource]="freeAppointments" class="mat-elevation-z8">
+        <!-- Day Column -->
+        <ng-container matColumnDef="day">
+          <th mat-header-cell *matHeaderCellDef> Day </th>
+          <td mat-cell *matCellDef="let appointment"> {{ appointment.day }} </td>
+        </ng-container>
+        <!-- Time Column -->
+        <ng-container matColumnDef="time">
+          <th mat-header-cell *matHeaderCellDef> Time </th>
+          <td mat-cell *matCellDef="let appointment"> {{ appointment.time }} </td>
+        </ng-container>
+        
+        <!-- Action Column (Optional) -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef class="text-center"> Action </th>
+          <td mat-cell *matCellDef="let appointment" class="flex justify-center">
+            <!-- Add action buttons or links if needed -->
+            
+                <button mat-icon-button (click)="onDeleteClick(null,appointment.day, appointment.time)" aria-label="Delete">
+                  <mat-icon>delete</mat-icon>
+                </button>
+           
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsFreeAppointments"></tr>
+        <tr mat-row *matRowDef="let appointment; columns: displayedColumnsFreeAppointments;"></tr>
+      </table>
+
+      <!-- Button to Add New Appointment -->
     
-          <!-- Name Column -->
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let patient"> {{patient.name}} </td>
-          </ng-container>
-    
-          <!-- Age Column -->
-          <ng-container matColumnDef="age">
-            <th mat-header-cell *matHeaderCellDef> Age </th>
-            <td mat-cell *matCellDef="let patient"> {{patient.age}} </td>
-          </ng-container>
-    
-          <!-- Time of Appointment Column -->
-          <ng-container matColumnDef="time">
-            <th mat-header-cell *matHeaderCellDef> Time of the appointment </th>
-            <td mat-cell *matCellDef="let patient"> {{patient.time}} </td>
-          </ng-container>
-    
-          <!-- Action Column -->
-          <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef class="text-center"> Action </th>
-            <td mat-cell *matCellDef="let patient" class="flex justify-center">
-              <button mat-icon-button (click)="onReportClick(patient)" aria-label="Weekly Report">
-                <mat-icon>description</mat-icon>
-              </button>
-              <button mat-icon-button (click)="onDeleteClick(patient)" aria-label="Delete">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </td>
-          </ng-container>
-    
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-      </div>
     </div>
   </div>
-  
+</div>

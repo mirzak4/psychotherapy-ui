@@ -1,45 +1,40 @@
-<h1 class="text-2xl text-slate-600 font-bold mb-10">Edit current article</h1>
-<form [formGroup]="articleForm">
+<h1 class="text-2xl text-slate-600 font-bold mb-10">Daily Reports (Past 7 Days)</h1>
+<div *ngIf="dailyReports.length > 0; else noReports">
+  <div *ngFor="let report of dailyReports" class="report-item bg-grey p-4 rounded shadow-md mb-4">
+    <p class="mb-4">{{ report.content }}</p>
+    <footer class="text-sm text-right text-grey-dark">{{ report.created_at }}</footer>
+  </div>
+</div>
+<ng-template #noReports>
+  <p>No daily reports found for the past 7 days.</p>
+</ng-template>
+<div *ngIf="!hasWeeklyReport">
+<h2 class="text-2xl text-slate-600 font-bold mb-10 mt-10">Add Weekly Report</h2>
+<form [formGroup]="weeklyReportForm">
   <mat-form-field class="w-full">
-    <mat-label>Enter article title</mat-label>
+    <mat-label>Enter Report Title</mat-label>
     <input type="text" matInput formControlName="title" />
   </mat-form-field>
   <mat-form-field class="w-full">
-    <mat-label>Write your content below:</mat-label>
-    <textarea
-      matInput
-      name=""
-      id=""
-      cols="30"
-      rows="10"
-      formControlName="content"
-    ></textarea>
+    <mat-label>Report Content</mat-label>
+    <textarea matInput cols="30" rows="10" formControlName="content"></textarea>
   </mat-form-field>
-  <div class="flex flex-row w-full gap-x-2">
-    <mat-form-field class="w-1/2">
-      <mat-label>Paste your image URL here</mat-label>
-      <input type="text" matInput formControlName="imageUrl" />
-    </mat-form-field>
-    <mat-form-field class="w-1/2">
-      <mat-label>Paste your video URL here</mat-label>
-      <input type="text" matInput />
-    </mat-form-field>
-  </div>
 </form>
-<div class="flex flex-row justify-center gap-x-2">
+<div class="flex flex-row justify-center gap-x-2 mt-4">
   <button
     mat-flat-button
-    class="border border-solid border-violet-800 bg-white text-violet-800"
     class="p-5 bg-custom-grey rounded-full p-3 shadow-lg text-base font-medium text-grey-darker"
-    (click)="closeModal()"
+    (click)="onClose()"
   >
     Exit
   </button>
   <button
     mat-flat-button
-    class="p-5 bg-grey-darker rounded-full p-3 shadow-lg text-base font-medium text-grey-lightest"
+    class="p-3 bg-grey-darker rounded-full shadow-lg text-base font-medium text-grey-lightest"
+    (click)="createReport()"
+    [disabled]="!weeklyReportForm.valid"
   >
-    Save
+    Save Report
   </button>
 </div>
-
+</div>

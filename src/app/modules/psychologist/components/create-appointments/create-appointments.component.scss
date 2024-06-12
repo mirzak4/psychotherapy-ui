@@ -1,0 +1,47 @@
+.appointment-dialog {
+    width: 100%;
+    padding: 24px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  
+    .mat-form-field {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+  
+    .mat-dialog-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 16px;
+    }
+  
+    .flex {
+      display: flex;
+      justify-content: flex-end;
+    }
+  
+    .justify-end {
+      justify-content: flex-end;
+    }
+  
+    .gap-x-2 {
+      gap: 8px;
+    }
+  
+    button {
+      min-width: 120px;
+    }
+  
+    button[color="primary"] {
+      background-color: #3182ce;
+      color: #fff;
+    }
+  
+    button[color="warn"] {
+      background-color: #e53e3e;
+      color: #fff;
+    }
+  }
+  
