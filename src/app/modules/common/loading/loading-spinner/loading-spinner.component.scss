@@ -1,0 +1,11 @@
+::ng-deep {
+    .mat-mdc-progress-spinner {
+
+        .mdc-circular-progress__indeterminate-container {
+
+            circle {
+                @apply stroke-slate-700;
+            }
+        }
+    }
+}

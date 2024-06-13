@@ -22,6 +22,11 @@ export class NavigationService {
       roles: [UserRole.Psychologist, UserRole.Patient],
     },
     {
+      label: 'Patient Dashboard',
+      link: 'psychologist/patient-list',
+      roles: [UserRole.Psychologist]
+    },
+    {
       label: 'Your Reports',
       // link: 'patient/reports',
       roles: [UserRole.Patient],

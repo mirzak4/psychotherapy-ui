@@ -9,6 +9,8 @@ import { AuthService } from '../../services/auth.service';
 import { of, switchMap, tap } from 'rxjs';
 import { UserRole } from '../../../../viewmodels/enums';
 import { PatientService } from '../../../patient/services/patient/patient.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { StatusSnackbarComponent } from '../../../common/components/status-snackbar/status-snackbar.component';
 
 @Component({
   selector: 'app-sign-in',
@@ -20,7 +22,8 @@ import { PatientService } from '../../../patient/services/patient/patient.servic
     MatLabel,
     MatButtonModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    MatSnackBarModule
   ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss'
@@ -32,7 +35,8 @@ export class SignInComponent {
     private _formBuilder: UntypedFormBuilder, 
     private _authService: AuthService,
     private _router: Router,
-    private _patientService: PatientService
+    private _patientService: PatientService,
+    private _matSnackbar: MatSnackBar
   ) {
     this.signInForm = this._formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -53,6 +57,17 @@ export class SignInComponent {
             default:
               return of(true);
         }}),
+        tap(() => {
+          this._matSnackbar.openFromComponent(StatusSnackbarComponent, {
+            duration: 4000,
+            data: {
+                success: true,
+                message: `Login successfull`,
+            },
+            verticalPosition: 'top',
+            horizontalPosition: 'end',
+          })
+        }),
         tap((homeNavigation) => {
           if (homeNavigation) {
             this._router.navigate(['/articles']);

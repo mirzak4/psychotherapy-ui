@@ -1,0 +1,13 @@
+<div class="flex w-fit items-center rounded-2xl px-6 py-3 gap-x-2"
+    [ngClass]="{
+        'bg-green-200': data.success,
+        'text-green-700': data.success,
+        'bg-red-200': !data.success,
+        'text-red-700': !data.success
+    }">
+    <mat-icon
+        class="3xl:icon-size-8 xl-2xl:icon-size-7 md-lg:icon-size-8 text-inherit">
+        {{ data.success ? 'check': 'warning_amber' }}
+    </mat-icon>
+    <span class="font-bold">{{ data.message.toUpperCase() }}</span>
+</div>

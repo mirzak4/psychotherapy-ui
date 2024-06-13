@@ -1,0 +1,13 @@
+::ng-deep {
+    .mdc-snackbar {
+        .mdc-snackbar__surface {
+            background: transparent!important;
+            box-shadow: none!important;
+        }
+        .mat-mdc-snackbar-label {
+            padding-top: 0!important;
+            background: transparent!important;
+
+        }
+    }
+}

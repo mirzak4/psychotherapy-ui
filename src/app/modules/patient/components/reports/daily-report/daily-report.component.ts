@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { Report } from '../../../../../viewmodels/classes';
 import { AuthService } from '../../../../auth/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { StatusSnackbarComponent } from '../../../../common/components/status-snackbar/status-snackbar.component';
 
 @Component({
   selector: 'app-daily-report',
@@ -34,7 +36,8 @@ export class DailyReportComponent implements OnInit {
     private reportService: ReportService,
     private _authService: AuthService,
     private _router: Router,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _matSnackbar: MatSnackBar
   ) {
   }
 
@@ -89,7 +92,18 @@ export class DailyReportComponent implements OnInit {
       createdAt: ''
     });
     this.reportService.createDailyReport(report).subscribe(
-      () => this._router.navigate(['../'], { relativeTo: this._route })
+      () => {
+        this._matSnackbar.openFromComponent(StatusSnackbarComponent, {
+          duration: 3000,
+          data: {
+              success: true,
+              message: `Daily report created`,
+          },
+          verticalPosition: 'top',
+          horizontalPosition: 'end',
+        });
+        this._router.navigate(['../'], { relativeTo: this._route });
+      }
     );
   }
 

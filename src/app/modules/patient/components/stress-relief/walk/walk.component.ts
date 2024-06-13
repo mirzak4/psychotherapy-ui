@@ -13,6 +13,8 @@ import { ConfirmDistanceComponent } from './confirm-distance/confirm-distance.co
 import { CreateWalkLogRequest, UpdateActionDurationTimeRequest } from '../../../../../viewmodels/classes';
 import { AuthService } from '../../../../auth/services/auth.service';
 import { IWalk } from '../../../../../viewmodels/viewmodels';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { StatusSnackbarComponent } from '../../../../common/components/status-snackbar/status-snackbar.component';
 
 @Component({
   selector: 'app-walk',
@@ -50,7 +52,8 @@ export class WalkComponent {
     private _router: Router,
     private _route: ActivatedRoute,
     private _matDialog: MatDialog,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _matSnackbar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -94,6 +97,15 @@ export class WalkComponent {
         return this._stressReliefService.updateActionDurationTime(request)
       })
     ).subscribe(() => {
+      this._matSnackbar.openFromComponent(StatusSnackbarComponent, {
+        duration: 4000,
+        data: {
+            success: true,
+            message: `Breath Control finished`,
+        },
+        verticalPosition: 'top',
+        horizontalPosition: 'end',
+      });
       this._router.navigate(['../'], { relativeTo: this._route });
     })
   }

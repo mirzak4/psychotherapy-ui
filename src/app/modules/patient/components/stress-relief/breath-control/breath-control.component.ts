@@ -10,6 +10,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { CreateBreathControlLogRequest, UpdateActionDurationTimeRequest } from '../../../../../viewmodels/classes';
 import { AuthService } from '../../../../auth/services/auth.service';
 import { IBreathControl } from '../../../../../viewmodels/viewmodels';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { StatusSnackbarComponent } from '../../../../common/components/status-snackbar/status-snackbar.component';
 
 @Component({
   selector: 'app-breath-control',
@@ -48,7 +50,8 @@ export class BreathControlComponent {
     private _stressReliefService: StressReliefService, 
     private _router: Router,
     private _route: ActivatedRoute,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _matSnackbar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -117,6 +120,17 @@ export class BreathControlComponent {
       stressReliefActionId: this.breathControl.stressReliefActionId,
       durationTime: durationMinutes
     });
-    this._stressReliefService.updateActionDurationTime(request).subscribe(() => this._router.navigate(['../'], { relativeTo: this._route }));
+    this._stressReliefService.updateActionDurationTime(request).subscribe(() => {
+      this._matSnackbar.openFromComponent(StatusSnackbarComponent, {
+        duration: 4000,
+        data: {
+            success: true,
+            message: `Breath Control finished`,
+        },
+        verticalPosition: 'top',
+        horizontalPosition: 'end',
+      });
+      this._router.navigate(['../'], { relativeTo: this._route });
+    });
   }
 }

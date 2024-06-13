@@ -9,6 +9,8 @@ import { AuthService } from '../../../auth/services/auth.service';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { of, switchMap, tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { StatusSnackbarComponent } from '../../../common/components/status-snackbar/status-snackbar.component';
 
 @Component({
   selector: 'app-psychologist-sessions',
@@ -32,7 +34,8 @@ export class PsychologistSessionsComponent implements OnInit, AfterViewInit {
     private _matDialogRef: MatDialogRef<PsychologistSessionsComponent>,
     private _authService: AuthService,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private _router: Router
+    private _router: Router,
+    private _matSnackbar: MatSnackBar
   ) {
   }
 
@@ -59,7 +62,18 @@ export class PsychologistSessionsComponent implements OnInit, AfterViewInit {
               time: session.time
             });
             return this._patientService.addPatientToSession(request).pipe(
-              tap(() => this._matDialogRef.close())
+              tap(() => {
+                this._matSnackbar.openFromComponent(StatusSnackbarComponent, {
+                  duration: 3000,
+                  data: {
+                      success: true,
+                      message: `Session assigned`,
+                  },
+                  verticalPosition: 'top',
+                  horizontalPosition: 'end',
+                });
+                this._matDialogRef.close();
+              })
             );
           }
           else {
