@@ -16,19 +16,19 @@ export class PsychologistService {
   private _authService = inject(AuthService);
   constructor() { }
   getAllPatientsForPsychologist() {
-    return this._http.get<IPatient[]>(environment.apiUrl + 'appointmentservice/patients/all').pipe(
+    return this._http.get<IPatient[]>(environment.apiUrl + 'patients/all').pipe(
       map((users: IPatient[]) => {
         return users.filter(u => u.selectedPsychologistId == this._authService.currentUserId);
       })
     );
   }
   getDailyReportsForUser(patientId: string): Observable<IDailyReport[]> {
-    return this._http.get<IDailyReport[]>(`${environment.apiUrl}appointmentservice/api/daily-reports?patientId=${patientId}`).pipe(
+    return this._http.get<IDailyReport[]>(`${environment.apiUrl}daily-reports?patientId=${patientId}`).pipe(
       map(reports => this.filterReportsLast7Days(reports))
     );
   }
   deleteSession(psychologistId: string, day: string, time: string): Observable<any> {
-    const url = `${environment.apiUrl}appointmentservice/api/sessions/deleteSession/{psychologistId}/{day}/{time}?psychologistId=${this._authService.currentUserId}&day=${day}&time=${time}`;
+    const url = `${environment.apiUrl}sessions/deleteSession/{psychologistId}/{day}/{time}?psychologistId=${this._authService.currentUserId}&day=${day}&time=${time}`;
     return this._http.delete(url);
   }
   private filterReportsLast7Days(reports: IDailyReport[]): IDailyReport[] {
@@ -41,10 +41,10 @@ export class PsychologistService {
     });
   }
   createWeeklyReport(weeklyReport: IWeeklyReport): Observable<any> {
-    return this._http.post(`${environment.apiUrl}appointmentservice/weekly-reports/create`, weeklyReport);
+    return this._http.post(`${environment.apiUrl}weekly-reports/create`, weeklyReport);
   }
   getAllSessionsForPsychologist(): Observable<any[]> {
-    return this._http.get<ISession[]>(`${environment.apiUrl}appointmentservice/api/sessions/getPsychologistSessions/${this._authService.currentUserId}`).pipe(
+    return this._http.get<ISession[]>(`${environment.apiUrl}sessions/getPsychologistSessions/${this._authService.currentUserId}`).pipe(
       map((sessions: ISession[]) => {
         console.log('Sessions before filtering:', sessions); // Debug log for sessions before filtering
         return sessions.filter(session => session.patientId !== null);
@@ -64,7 +64,7 @@ export class PsychologistService {
     );
   }
   getAllFreeSessions(): Observable<any[]> {
-    return this._http.get<ISession[]>(`${environment.apiUrl}appointmentservice/api/sessions/getPsychologistSessions/${this._authService.currentUserId}`).pipe(
+    return this._http.get<ISession[]>(`${environment.apiUrl}sessions/getPsychologistSessions/${this._authService.currentUserId}`).pipe(
       map((sessions: ISession[]) => {
         console.log('Sessions before filtering:', sessions); // Debug log for sessions before filtering
         return sessions.filter(session => session.patientId == null);
@@ -73,11 +73,11 @@ export class PsychologistService {
   }
   createSession(request: ICreateSessionRequest): Observable<any> {
     request.psychologistId=this._authService.currentUserId;
-    const url = `${environment.apiUrl}appointmentservice/api/sessions/create`;
+    const url = `${environment.apiUrl}sessions/create`;
     return this._http.post<any>(url, request);
   }
   getWeeklyReportsForPsychologist(): Observable<IWeeklyReport[]> {
-    return this._http.get<IWeeklyReport[]>(`${environment.apiUrl}appointmentservice/weekly-reports/psychologist/${this._authService.currentUserId}`);
+    return this._http.get<IWeeklyReport[]>(`${environment.apiUrl}weekly-reports/psychologist/${this._authService.currentUserId}`);
   }
   checkIfPatientHasWeeklyReportForThisWeek(patientId: string): Observable<boolean> {
     return this.getWeeklyReportsForPsychologist().pipe(
@@ -113,10 +113,10 @@ export class PsychologistService {
   }
 
   getUserByUserId(userId: string): Observable<IUser> {
-    return this._http.get<IUser>(`${environment.apiUrl}userservice/userId/${userId}`);
+    return this._http.get<IUser>(`${environment.apiUrl}users/${userId}`);
   }
   getPatientByUserId(userId: string): Observable<IPatient> {
-    return this._http.get<IPatient>(`${environment.apiUrl}appointmentservice/patients/find/${userId}`);
+    return this._http.get<IPatient>(`${environment.apiUrl}patients/find/${userId}`);
   }
 }
 

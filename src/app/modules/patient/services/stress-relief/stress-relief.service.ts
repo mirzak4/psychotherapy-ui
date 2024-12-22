@@ -21,25 +21,25 @@ export class StressReliefService {
   }
 
   createMeditationLog(request: ICreateMeditationLogRequest) {
-    return this._http.post<IMeditation>(environment.apiUrl + 'stressreliefservice/stressrelief/meditation', request);
+    return this._http.post<IMeditation>(environment.apiUrl + 'stressrelief/meditation', request);
   }
 
   createBreathControlLog(request: ICreateBreathContolLogRequest) {
-    return this._http.post<IBreathControl>(environment.apiUrl + 'stressreliefservice/stressrelief/breathcontrol', request);
+    return this._http.post<IBreathControl>(environment.apiUrl + 'stressrelief/breathcontrol', request);
   }
 
   createWalkLog(request: ICreateWalkLogRequest) {
-    return this._http.post<IWalk>(environment.apiUrl + 'stressreliefservice/stressrelief/walk', request);
+    return this._http.post<IWalk>(environment.apiUrl + 'stressrelief/walk', request);
   }
 
   updateActionDurationTime(request: IUpdateActionDurationTimeRequest) {
-    return this._http.patch(environment.apiUrl + 'stressreliefservice/stressrelief/durationtime', request);
+    return this._http.patch(environment.apiUrl + 'stressrelief/durationtime', request);
   }
 
   getAllActionLogs(patientId: string) {
     let params = new HttpParams().set('patientId', patientId).set('daysOffset', 1000);
     return this._http.get<GetStressReliefActionLogsResponse>(
-      environment.apiUrl + 'stressreliefservice/stressrelief/actionlogs',
+      environment.apiUrl + 'stressrelief/actionlogs',
       { params: params }
     );
   }

@@ -91,7 +91,7 @@ export class AuthService {
 
   // Common auth methods
   signIn(email: string, password: string): Observable<any> {
-    return this._http.post<LoginResponse>(environment.apiUrl + 'userservice/login', {
+    return this._http.post<LoginResponse>(environment.apiUrl + 'users/login', {
       email: email,
       password: password
     }).pipe(
@@ -107,7 +107,7 @@ export class AuthService {
 
   registerPatient(request: IRegisterPatientRequest, patientAge: number) {
     const params = new HttpParams().set('age', patientAge);
-    return this._http.post(environment.apiUrl + 'userservice/registerPatient', request, { params: params });
+    return this._http.post(environment.apiUrl + 'users/registerPatient', request, { params: params });
   }
 
   getAllSystemRoles(): Role[] {
@@ -129,7 +129,7 @@ export class AuthService {
   }
 
   fetchAllRoles() {
-    return this._http.get<IRole[]>(environment.apiUrl + 'userservice/roles').pipe(
+    return this._http.get<IRole[]>(environment.apiUrl + 'roles').pipe(
       tap((roles: IRole[]) => this._systemRoles = roles)
     );
   }

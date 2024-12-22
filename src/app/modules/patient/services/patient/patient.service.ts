@@ -16,7 +16,7 @@ export class PatientService {
   constructor() { }
 
   getAllPsychologists() {
-    return this._http.get<IUser[]>(environment.apiUrl + 'userservice/users').pipe(
+    return this._http.get<IUser[]>(environment.apiUrl + '/users/all').pipe(
       map((users: IUser[]) => {
         const psychologistRole = this._authService.getAllSystemRoles().find(
           r => r.name === UserRole.Psychologist
@@ -28,19 +28,19 @@ export class PatientService {
 
   getSessionsForPsychologist(psychologistId: string) {
     return this._http.get<ISession[]>(environment.apiUrl + 
-      'appointmentservice/api/sessions/getAllAvailableSessions/' + psychologistId);
+      'sessions/getAllAvailableSessions/' + psychologistId);
   }
 
   addPatientToSession(request: IAddPatientToSessionRequest) {
     return this._http.post(environment.apiUrl + 
-      'appointmentservice/api/sessions/addPatient',
+      'sessions/addPatient',
       request
     );
   }
 
   checkIfPatientHasChosenPsychologist(patientId: string) {
     return this._http.get<boolean>(environment.apiUrl +
-      'appointmentservice/patients/checkIfPatientHasChosenPsychologist/' + patientId
+      'patients/checkIfPatientHasChosenPsychologist/' + patientId
     );
   }
 
@@ -50,7 +50,7 @@ export class PatientService {
       .set('day', day)
       .set('time', time);
     return this._http.get<any>(environment.apiUrl +
-      'appointmentservice/route/',
+      'route/',
       { params: params });
   }
 
@@ -59,7 +59,7 @@ export class PatientService {
     .set('code', token)
     .set('scope', '');
     return this._http.get(environment.apiUrl +
-      'appointmentservice/route/token',
+      'route/token',
       { params: params }
     );
   }

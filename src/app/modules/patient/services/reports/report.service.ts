@@ -31,11 +31,11 @@ export class ReportService {
   }
 
   createDailyReport(report: IReport) {
-    return this._http.post(environment.apiUrl + 'appointmentservice/api/daily-reports', report);
+    return this._http.post(environment.apiUrl + 'daily-reports', report);
   }
 
   getDailyReportsForPatient(patientId: string) {
     const params = new HttpParams().set('patientId', patientId);
-    return this._http.get<IReport[]>(environment.apiUrl + 'appointmentservice/api/daily-reports', { params: params });
+    return this._http.get<IReport[]>(environment.apiUrl + 'daily-reports', { params: params });
   }
 }
